@@ -27,14 +27,14 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 md:py-32 bg-white">
+    <section id="services" className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-4"
+            className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3"
           >
             Our Expertise
           </motion.h2>
@@ -43,7 +43,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-6"
+            className="text-3xl md:text-4xl font-bold text-primary leading-tight mb-4"
           >
             End-to-end maritime <span className="font-serif italic font-normal text-accent">solutions</span>.
           </motion.h3>
@@ -52,13 +52,13 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground text-lg"
+            className="text-muted-foreground text-base"
           >
             From fixing the cargo to delivering it safely, we provide comprehensive management services that protect asset value and guarantee performance.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 lg:gap-8">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -66,15 +66,15 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-8 lg:p-12 border border-gray-100 bg-white hover:bg-primary transition-colors duration-500"
+              className="group p-6 lg:p-8 border border-gray-100 bg-white hover:bg-primary transition-colors duration-500"
             >
-              <div className="text-accent group-hover:text-white transition-colors duration-500 mb-6">
+              <div className="text-accent group-hover:text-white transition-colors duration-500 mb-4">
                 {service.icon}
               </div>
-              <h4 className="text-2xl font-bold text-primary group-hover:text-white transition-colors duration-500 mb-4">
+              <h4 className="text-xl font-bold text-primary group-hover:text-white transition-colors duration-500 mb-3">
                 {service.title}
               </h4>
-              <p className="text-muted-foreground group-hover:text-white/80 transition-colors duration-500 leading-relaxed">
+              <p className="text-sm text-muted-foreground group-hover:text-white/80 transition-colors duration-500 leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
@@ -86,7 +86,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 w-full h-[400px] bg-gray-200 relative overflow-hidden"
+          className="mt-12 w-full h-[250px] md:h-[300px] bg-gray-200 relative overflow-hidden"
         >
           <img 
             src="/images/services-cargo.jpg" 

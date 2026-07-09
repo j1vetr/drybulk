@@ -24,8 +24,8 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-3 border-gray-200'
-          : 'bg-transparent py-5'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2 border-gray-200'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -34,19 +34,19 @@ export function Navbar() {
             src="/logo.png"
             alt="Drybulk Pioneer Logo"
             className={`transition-all duration-300 ${
-              isScrolled ? 'h-10' : 'h-12 brightness-0 invert'
+              isScrolled ? 'h-8' : 'h-10 brightness-0 invert'
             }`}
           />
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide uppercase transition-colors hover:text-accent ${
+                className={`text-xs font-medium tracking-wide uppercase transition-colors hover:text-accent ${
                   isScrolled ? 'text-primary' : 'text-white hover:text-white/80'
                 }`}
               >
@@ -56,7 +56,7 @@ export function Navbar() {
           </div>
           <a
             href="#contact"
-            className={`px-6 py-2.5 text-sm font-semibold tracking-wide uppercase transition-all duration-300 ${
+            className={`px-5 py-2 text-xs font-semibold tracking-wide uppercase transition-all duration-300 ${
               isScrolled
                 ? 'bg-primary text-white hover:bg-primary/90'
                 : 'bg-white text-primary hover:bg-white/90'
