@@ -1,38 +1,125 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from '@/components/ui/carousel';
 
-const fleetClasses = [
+const vessels = [
   {
-    name: "Capesize",
-    capacity: "150,000 - 400,000 DWT",
-    description: "The giants of our fleet, primarily utilized for transporting iron ore and coal across major deep-water trade routes.",
+    name: 'Pioneer Ocean',
+    className: 'Capesize Bulk Carrier',
+    image: '/images/pioneer-ocean.webp',
+    capacity: '180,000 DWT',
+    yearBuilt: '2018',
+    length: '292.0 m',
   },
   {
-    name: "Panamax",
-    capacity: "65,000 - 85,000 DWT",
-    description: "Versatile workhorses capable of navigating the Panama Canal, ideal for coal, grain, and minor bulk commodities.",
+    name: 'Pioneer Atlantic',
+    className: 'Panamax Bulk Carrier',
+    image: '/images/pioneer-atlantic.webp',
+    capacity: '79,000 DWT',
+    yearBuilt: '2016',
+    length: '225.0 m',
   },
   {
-    name: "Supramax",
-    capacity: "50,000 - 60,000 DWT",
-    description: "Geared vessels equipped with own cranes, offering maximum flexibility for ports lacking sophisticated cargo handling infrastructure.",
+    name: 'Pioneer Pacific',
+    className: 'Supramax Bulk Carrier',
+    image: '/images/pioneer-pacific.webp',
+    capacity: '56,000 DWT',
+    yearBuilt: '2019',
+    length: '199.9 m',
   },
   {
-    name: "Handysize",
-    capacity: "15,000 - 35,000 DWT",
-    description: "Highly maneuverable vessels designed for niche ports and specialized bulk cargoes like steel products and fertilizers.",
-  }
+    name: 'Pioneer Horizon',
+    className: 'Handymax Bulk Carrier',
+    image: '/images/pioneer-horizon.webp',
+    capacity: '38,000 DWT',
+    yearBuilt: '2017',
+    length: '179.9 m',
+  },
+  {
+    name: 'Pioneer Star',
+    className: 'Handysize Bulk Carrier',
+    image: '/images/pioneer-star.webp',
+    capacity: '32,000 DWT',
+    yearBuilt: '2015',
+    length: '178.0 m',
+  },
+  {
+    name: 'Pioneer Dawn',
+    className: 'Handysize Bulk Carrier',
+    image: '/images/pioneer-dawn.webp',
+    capacity: '28,000 DWT',
+    yearBuilt: '2014',
+    length: '160.0 m',
+  },
 ];
 
 export function Fleet() {
-  return (
-    <section id="fleet" className="py-16 md:py-20 bg-gray-50 relative overflow-hidden">
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gray-200/50 -skew-x-12 translate-x-1/4"></div>
+  const [api, setApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [allowMotion, setAllowMotion] = useState(true);
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-6">
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setAllowMotion(!query.matches);
+    const handleChange = (e: MediaQueryListEvent) => setAllowMotion(!e.matches);
+    query.addEventListener('change', handleChange);
+    return () => query.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (!api) return;
+    const onSelect = () => {
+      setScrollSnaps(api.scrollSnapList());
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+    onSelect();
+    api.on('select', onSelect);
+    api.on('reInit', onSelect);
+    return () => {
+      api.off('select', onSelect);
+      api.off('reInit', onSelect);
+    };
+  }, [api]);
+
+  const scrollTo = useCallback((index: number) => api?.scrollTo(index), [api]);
+
+  return (
+    <section id="fleet" className="relative py-20 md:py-28 bg-primary overflow-hidden">
+      {/* Background video */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {allowMotion ? (
+          <video
+            src="/videos/fleet-bg.mp4"
+            poster="/images/fleet-bg-poster.webp"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        ) : (
+          <img
+            src="/images/fleet-bg-poster.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        )}
+        <div className="absolute inset-0 bg-primary/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/40"></div>
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,66 +127,123 @@ export function Fleet() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h2 className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3">Our Fleet</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-primary leading-tight">
-              Built for <span className="font-serif italic font-normal text-accent">scale</span>. <br/>Engineered for efficiency.
-            </h3>
+            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
+              Our Fleet
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-3">
+              Modern Fleet. Global Standards.
+            </h2>
+            <p className="text-white/70 text-base leading-relaxed max-w-xl">
+              Our modern and well-maintained fleet is equipped to handle a wide range of dry bulk cargoes, ensuring safe and efficient operations worldwide.
+            </p>
           </motion.div>
-          <motion.p
+
+          <motion.a
+            href="#fleet"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted-foreground text-sm max-w-md"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 border border-white/40 text-white text-sm font-semibold hover:bg-white/10 transition-colors group"
           >
-            A modern, diversified fleet of bulk carriers maintained to the highest industry standards, ready to meet the demands of global commodity trading.
-          </motion.p>
+            View Full Fleet
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </motion.a>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* Main Image */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 aspect-[4/3] lg:aspect-auto bg-gray-200 relative group overflow-hidden"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative"
+        >
+          <Carousel
+            setApi={setApi}
+            opts={{ align: 'start', loop: true }}
+            className="px-1"
           >
-            <img 
-              src="/images/fleet-vessel.jpg" 
-              alt="Massive dry bulk carrier" 
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <p className="text-white/80 text-xs font-bold tracking-widest uppercase mb-2">Flagship Standard</p>
-              <p className="text-white text-lg md:text-xl font-light">Maintaining an average fleet age significantly below industry standards to ensure maximum reliability.</p>
-            </div>
-          </motion.div>
+            <CarouselContent>
+              {vessels.map((vessel) => (
+                <CarouselItem
+                  key={vessel.name}
+                  className="basis-[85%] sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                >
+                  <div className="bg-white h-full flex flex-col group overflow-hidden">
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img
+                        src={vessel.image}
+                        alt={`${vessel.name}, a ${vessel.className.toLowerCase()}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="text-primary font-bold text-lg mb-1">{vessel.name}</h3>
+                      <p className="text-accent text-xs font-semibold mb-4">{vessel.className}</p>
 
-          {/* Fleet Classes Accordion-style List */}
-          <div className="lg:col-span-5 flex flex-col justify-center gap-4">
-            {fleetClasses.map((shipClass, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group border-b border-gray-200 pb-4 last:border-0"
-              >
-                <div className="flex justify-between items-baseline mb-2">
-                  <h4 className="text-xl font-bold text-primary group-hover:text-accent transition-colors">
-                    {shipClass.name}
-                  </h4>
-                  <span className="text-xs font-mono text-muted-foreground">{shipClass.capacity}</span>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-2">
-                  {shipClass.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                      <div className="space-y-2 mb-4 text-sm">
+                        <div className="flex justify-between border-b border-gray-100 pb-2">
+                          <span className="text-muted-foreground">Capacity</span>
+                          <span className="text-primary font-semibold">{vessel.capacity}</span>
+                        </div>
+                        <div className="flex justify-between border-b border-gray-100 pb-2">
+                          <span className="text-muted-foreground">Year Built</span>
+                          <span className="text-primary font-semibold">{vessel.yearBuilt}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Length</span>
+                          <span className="text-primary font-semibold">{vessel.length}</span>
+                        </div>
+                      </div>
+
+                      <a
+                        href="#contact"
+                        className="mt-auto inline-flex items-center gap-1.5 text-accent text-sm font-semibold hover:gap-2.5 transition-all"
+                      >
+                        View Details
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Prev / Next arrows */}
+          <button
+            type="button"
+            aria-label="Previous vessel"
+            onClick={() => api?.scrollPrev()}
+            className="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-white items-center justify-center text-primary shadow-lg hover:bg-accent hover:text-white transition-colors z-10"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next vessel"
+            onClick={() => api?.scrollNext()}
+            className="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-white items-center justify-center text-primary shadow-lg hover:bg-accent hover:text-white transition-colors z-10"
+          >
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </motion.div>
+
+        {/* Dot pagination */}
+        <div className="flex items-center justify-center gap-2 mt-10">
+          {scrollSnaps.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Go to slide ${index + 1}`}
+              onClick={() => scrollTo(index)}
+              aria-current={index === selectedIndex}
+              className={`h-2 rounded-full transition-all ${
+                index === selectedIndex ? 'w-6 bg-accent' : 'w-2 bg-white/30 hover:bg-white/50'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
