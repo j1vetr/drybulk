@@ -33,7 +33,7 @@ export function Footer() {
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 border-t border-white/10 text-white/40 text-[10px]">
-          <p>&copy; {new Date().getFullYear()} Drybulk Pioneer Denizcilik A.Ş. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Drybulk Pioneer Denizcilik ve Ticaret Ltd. Şti. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Global Maritime Operator.</p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Mail, Clock } from 'lucide-react';
 
 export function Contact() {
   return (
@@ -27,7 +27,6 @@ export function Contact() {
                 <p className="text-white/70 text-sm leading-relaxed">
                   Shipping never sleeps. Our operations and technical teams are available around the clock to ensure seamless voyage execution and immediate incident response.
                 </p>
-                <div className="mt-3 font-mono text-accent text-sm font-bold tracking-wider">AOG: +90 555 000 0000</div>
               </div>
             </div>
 
@@ -39,22 +38,9 @@ export function Contact() {
                 <div>
                   <h5 className="font-bold text-primary mb-1 text-sm">Global Headquarters</h5>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Drybulk Pioneer Denizcilik A.Ş.<br />
-                    Levent Mah. Büyükdere Cad.<br />
-                    No: 199, 34394 Şişli / İstanbul, Turkey
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 bg-white flex items-center justify-center border border-gray-200 shrink-0">
-                  <Phone className="w-4 h-4 text-primary" />
-                </div>
-                <div>
-                  <h5 className="font-bold text-primary mb-1 text-sm">Commercial Desk</h5>
-                  <p className="text-muted-foreground text-sm">
-                    +90 212 555 0000<br />
-                    +90 212 555 0001
+                    Drybulk Pioneer Denizcilik ve Ticaret Ltd. Şti.<br />
+                    Kosuyolu Mah. Cenap Şahabettin Sokak No:90<br />
+                    34718 Kadıköy / İstanbul, Türkiye
                   </p>
                 </div>
               </div>
@@ -66,8 +52,9 @@ export function Contact() {
                 <div>
                   <h5 className="font-bold text-primary mb-1 text-sm">Email Inquiries</h5>
                   <p className="text-muted-foreground text-sm">
-                    Chartering: chartering@drybulkpioneer.com<br />
-                    Operations: ops@drybulkpioneer.com
+                    <a href="mailto:drybulk@dbpioneer.com" className="hover:text-primary transition-colors">
+                      drybulk@dbpioneer.com
+                    </a>
                   </p>
                 </div>
               </div>
@@ -98,11 +85,11 @@ export function Contact() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Email Address</label>
-                  <input type="email" className="w-full border-b border-gray-300 py-1.5 text-sm focus:outline-none focus:border-primary transition-colors bg-transparent" placeholder="work@company.com" />
+                  <input type="email" className="w-full border-b border-gray-300 py-1.5 text-sm focus:outline-none focus:border-primary transition-colors bg-transparent" placeholder="name@company.com" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Phone Number</label>
-                  <input type="tel" className="w-full border-b border-gray-300 py-1.5 text-sm focus:outline-none focus:border-primary transition-colors bg-transparent" placeholder="+1 (555) 000-0000" />
+                  <input type="tel" className="w-full border-b border-gray-300 py-1.5 text-sm focus:outline-none focus:border-primary transition-colors bg-transparent" placeholder="+90 5XX XXX XX XX" />
                 </div>
               </div>
 
