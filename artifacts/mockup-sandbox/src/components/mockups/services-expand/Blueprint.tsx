@@ -89,7 +89,7 @@ export default function Blueprint() {
             >
               <span className="w-8" />
               <span
-                className="whitespace-nowrap uppercase text-xs tracking-[0.35em] font-medium group-hover:text-white transition-colors"
+                className="whitespace-nowrap uppercase text-xl lg:text-2xl tracking-[0.15em] font-bold group-hover:text-white transition-colors"
                 style={{ writingMode: "vertical-rl", color: INK }}
               >
                 {s.title}
