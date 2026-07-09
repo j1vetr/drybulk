@@ -83,5 +83,8 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Scale the whole site down to match the look of 90% browser zoom,
+       since Tailwind's spacing/typography utilities are rem-based. */
+    font-size: 90%;
   }
 }
