@@ -49,6 +49,25 @@ export function Services() {
 
   return (
     <section id="services" className="relative">
+      <div className="bg-white py-16 md:py-20">
+        <div className="container mx-auto px-6 md:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl"
+          >
+            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
+              Our Services
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1]">
+              Comprehensive Maritime Solutions
+            </h2>
+          </motion.div>
+        </div>
+      </div>
+
       <div
         className="w-full h-[560px] sm:h-[640px] lg:h-[760px] flex overflow-hidden relative"
         style={{ backgroundColor: PAPER, fontFamily: "'Inter', sans-serif" }}
