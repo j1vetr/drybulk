@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Globe, ShieldCheck, ShieldPlus } from 'lucide-react';
 
 const stats = [
-  { icon: Globe, title: 'Global Operations', subtitle: 'Worldwide coverage' },
-  { icon: ShieldCheck, title: 'Reliable Service', subtitle: 'On-time performance' },
-  { icon: ShieldPlus, title: 'Safety First', subtitle: 'Committed to safety' },
+  { icon: Globe, title: 'Global Operations', subtitle: 'Worldwide Coverage' },
+  { icon: ShieldCheck, title: 'Reliable Service', subtitle: 'On-Time Performance' },
+  { icon: ShieldPlus, title: 'Safety First', subtitle: 'Committed To Safety' },
 ];
 
 export function Hero() {
