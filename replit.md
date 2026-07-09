@@ -34,7 +34,7 @@ _Describe the high-level user-facing capabilities of this app once they exist._
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Never use em dashes (—) in any copy/content written for the site. Use a period, comma, or colon instead.
 
 ## Gotchas
 
