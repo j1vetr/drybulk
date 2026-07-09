@@ -21,7 +21,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-end pt-24 pb-10 overflow-hidden bg-primary">
+    <section className="relative min-h-[100dvh] flex items-center pt-20 pb-10 overflow-hidden bg-primary">
       {/* Background Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {allowMotion ? (
