@@ -119,37 +119,23 @@ export function Fleet() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl"
-          >
-            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
-              Our Fleet
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-3">
-              Modern Fleet. Global Standards.
-            </h2>
-            <p className="text-white/70 text-base leading-relaxed max-w-xl">
-              Our modern and well-maintained fleet is equipped to handle a wide range of dry bulk cargoes, ensuring safe and efficient operations worldwide.
-            </p>
-          </motion.div>
-
-          <motion.a
-            href="#fleet"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="shrink-0 inline-flex items-center gap-2 px-5 py-3 border border-white/40 text-white text-sm font-semibold hover:bg-white/10 transition-colors group"
-          >
-            View Full Fleet
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto text-center mb-12 md:mb-16"
+        >
+          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
+            Our Fleet
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-3">
+            Modern Fleet. Global Standards.
+          </h2>
+          <p className="text-white/70 text-base leading-relaxed">
+            Our modern and well-maintained fleet is equipped to handle a wide range of dry bulk cargoes, ensuring safe and efficient operations worldwide.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
