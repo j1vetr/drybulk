@@ -4,22 +4,18 @@ import { ShieldCheck } from 'lucide-react';
 
 const FEATURES = [
   {
-    index: '01',
     title: 'Financial Strength',
     desc: 'A robust balance sheet ensuring stability through market cycles, giving our partners total peace of mind.',
   },
   {
-    index: '02',
     title: 'Environmental Stewardship',
     desc: 'Investing in emission-reduction technologies and optimizing routing to minimize our carbon footprint.',
   },
   {
-    index: '03',
     title: 'Risk Management',
     desc: 'Sophisticated hedging strategies and comprehensive insurance coverage to mitigate exposure across all operations.',
   },
   {
-    index: '04',
     title: 'Vetted Crewing',
     desc: 'Employing only highly-trained, experienced seafarers who prioritize safety, cargo care, and operational protocol.',
   },
@@ -86,8 +82,8 @@ export function Trust() {
           </motion.div>
         </div>
 
-        {/* Feature grid, presented as a technical spec sheet */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
+        {/* Feature grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {FEATURES.map((f, i) => (
             <motion.div
               key={f.title}
@@ -95,11 +91,13 @@ export function Trust() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-primary p-6 md:p-8"
+              className="bg-white rounded-xl border border-white/10 p-6 md:p-8 flex flex-col"
             >
-              <span className="text-4xl md:text-5xl font-bold text-white/10 leading-none block mb-4">{f.index}</span>
-              <h4 className="text-base md:text-lg font-bold mb-2">{f.title}</h4>
-              <p className="text-white/60 text-sm leading-relaxed">{f.desc}</p>
+              <div className="h-1 w-10 bg-accent rounded-full mb-4" />
+              <h4 className="text-base md:text-lg font-bold text-primary mb-2 min-h-[48px] md:min-h-[56px]">
+                {f.title}
+              </h4>
+              <p className="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
