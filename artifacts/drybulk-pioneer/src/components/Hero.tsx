@@ -1,77 +1,91 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe, ShieldCheck, Headphones, ShieldPlus } from 'lucide-react';
+
+const stats = [
+  { icon: Globe, title: 'Global Operations', subtitle: 'Worldwide coverage' },
+  { icon: ShieldCheck, title: 'Reliable Service', subtitle: 'On-time performance' },
+  { icon: Headphones, title: '24/7 Support', subtitle: 'Always here for you' },
+  { icon: ShieldPlus, title: 'Safety First', subtitle: 'Committed to safety' },
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[75dvh] flex items-center justify-center pt-20 pb-16 overflow-hidden">
+    <section className="relative min-h-[640px] md:min-h-[680px] flex items-end pt-24 pb-10 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-ship.jpg"
-          alt="Massive dry bulk carrier on open ocean"
+          src="/images/hero-ship.webp"
+          alt="Drybulk Pioneer bulk carrier passing under the Bosphorus Bridge"
           className="w-full h-full object-cover object-center"
         />
-        {/* Dark overlay for contrast */}
-        <div className="absolute inset-0 bg-primary/70 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-primary/90"></div>
+        {/* Left-to-right navy gradient for text contrast, ship stays visible on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/55 to-primary/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-primary/30"></div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col items-center text-center mt-12 md:mt-0">
+      <div className="container relative z-10 mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="max-w-2xl"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-white/20 bg-white/10 backdrop-blur-sm text-white/90 text-xs font-semibold tracking-[0.2em] uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            Global Maritime Excellence
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-[1.1] tracking-tight">
-            Powering Global <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 font-serif italic">Commerce.</span>
-          </h1>
-          
-          <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
-            Drybulk Pioneer Denizcilik delivers uncompromising reliability, scale, and operational discipline to international dry bulk shipping. We navigate the world's most demanding supply chains with precision.
+          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-4">
+            Global Reach. Local Commitment.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.08] tracking-tight uppercase">
+            Dry Bulk<br />Shipping Experts
+          </h1>
+
+          <p className="text-base md:text-lg text-white/80 max-w-lg mb-8 font-light leading-relaxed">
+            Delivering reliable, efficient, and client-focused maritime solutions across the globe.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-12">
             <a
               href="#contact"
-              className="w-full sm:w-auto px-6 py-3 bg-white text-primary font-bold uppercase tracking-widest text-xs hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-6 py-3 bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-colors flex items-center justify-center gap-2 group"
             >
-              Request a Quote
-              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              Request Quote
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#fleet"
-              className="w-full sm:w-auto px-6 py-3 bg-transparent border border-white text-white font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors flex items-center justify-center"
+              href="#services"
+              className="w-full sm:w-auto px-6 py-3 bg-transparent border border-white/70 text-white font-semibold text-sm hover:bg-white/10 transition-colors flex items-center justify-center"
             >
-              Explore Our Fleet
+              Explore Services
             </a>
           </div>
         </motion.div>
-      </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-white/50 text-xs uppercase tracking-[0.2em]">Scroll</span>
-        <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-          <motion.div 
-            className="absolute top-0 left-0 w-full h-1/2 bg-white"
-            animate={{ top: ['-50%', '100%'] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
+          className="grid grid-cols-2 gap-y-4 md:flex md:flex-nowrap md:items-center md:gap-x-6"
+        >
+          {stats.map((stat, i) => {
+            const isLeftColumn = i % 2 === 0;
+            const isLastItem = i === stats.length - 1;
+            return (
+            <div
+              key={stat.title}
+              className={`flex items-center gap-3 pr-4 md:pr-6 border-white/20 ${
+                isLeftColumn ? 'border-r' : ''
+              } ${!isLastItem ? 'md:border-r' : 'md:border-r-0'}`}
+            >
+              <stat.icon className="w-6 h-6 text-accent shrink-0" strokeWidth={1.75} />
+              <div className="leading-tight">
+                <div className="text-white text-sm font-semibold">{stat.title}</div>
+                <div className="text-white/60 text-xs">{stat.subtitle}</div>
+              </div>
+            </div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 }
