@@ -60,7 +60,7 @@ export function Hero() {
           </p>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.08] tracking-tight uppercase">
-            Dry Bulk<br />Shipping Experts
+            Dry Bulk<br />Pioneer
           </h1>
 
           <p className="text-base md:text-lg text-white/80 max-w-lg mb-8 font-light leading-relaxed">

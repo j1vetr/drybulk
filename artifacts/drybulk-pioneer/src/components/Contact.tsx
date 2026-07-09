@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export function Contact() {
   return (
@@ -41,6 +41,20 @@ export function Contact() {
                     Drybulk Pioneer Denizcilik ve Ticaret Ltd. Şti.<br />
                     Kosuyolu Mah. Cenap Şahabettin Sokak No:90<br />
                     34718 Kadıköy / İstanbul, Türkiye
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-10 h-10 bg-white flex items-center justify-center border border-gray-200 shrink-0">
+                  <Phone className="w-4 h-4 text-primary" />
+                </div>
+                <div>
+                  <h5 className="font-bold text-primary mb-1 text-sm">Phone</h5>
+                  <p className="text-muted-foreground text-sm">
+                    <a href="tel:+902165450945" className="hover:text-primary transition-colors">
+                      +90 216 545 09 45
+                    </a>
                   </p>
                 </div>
               </div>

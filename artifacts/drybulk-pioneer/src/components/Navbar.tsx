@@ -35,7 +35,7 @@ export function Navbar() {
             src="/logo.png"
             alt="Drybulk Pioneer Logo"
             className={`transition-all duration-300 ${
-              isScrolled ? 'h-8' : 'h-10 brightness-0 invert'
+              isScrolled ? 'h-14' : 'h-20 brightness-0 invert'
             }`}
           />
         </a>
