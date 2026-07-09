@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, ShieldCheck, Headphones, ShieldPlus } from 'lucide-react';
+import { ArrowRight, Globe, ShieldCheck, ShieldPlus } from 'lucide-react';
 
 const stats = [
   { icon: Globe, title: 'Global Operations', subtitle: 'Worldwide coverage' },
   { icon: ShieldCheck, title: 'Reliable Service', subtitle: 'On-time performance' },
-  { icon: Headphones, title: '24/7 Support', subtitle: 'Always here for you' },
   { icon: ShieldPlus, title: 'Safety First', subtitle: 'Committed to safety' },
 ];
 
@@ -89,17 +88,16 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-          className="grid grid-cols-2 gap-y-4 md:flex md:flex-nowrap md:items-center md:gap-x-6"
+          className="flex flex-wrap items-center gap-x-6 gap-y-4"
         >
           {stats.map((stat, i) => {
-            const isLeftColumn = i % 2 === 0;
             const isLastItem = i === stats.length - 1;
             return (
             <div
               key={stat.title}
-              className={`flex items-center gap-3 pr-4 md:pr-6 border-white/20 ${
-                isLeftColumn ? 'border-r' : ''
-              } ${!isLastItem ? 'md:border-r' : 'md:border-r-0'}`}
+              className={`flex items-center gap-3 pr-6 border-white/20 ${
+                !isLastItem ? 'border-r' : ''
+              }`}
             >
               <stat.icon className="w-6 h-6 text-accent shrink-0" strokeWidth={1.75} />
               <div className="leading-tight">
