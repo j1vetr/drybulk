@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, ShieldCheck, Headphones, ShieldPlus } from 'lucide-react';
 
@@ -10,16 +10,41 @@ const stats = [
 ];
 
 export function Hero() {
+  const [allowMotion, setAllowMotion] = useState(true);
+
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setAllowMotion(!query.matches);
+    const handleChange = (e: MediaQueryListEvent) => setAllowMotion(!e.matches);
+    query.addEventListener('change', handleChange);
+    return () => query.removeEventListener('change', handleChange);
+  }, []);
+
   return (
-    <section className="relative min-h-[640px] md:min-h-[680px] flex items-end pt-24 pb-10 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero-ship.webp"
-          alt="Drybulk Pioneer bulk carrier passing under the Bosphorus Bridge"
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Left-to-right navy gradient for text contrast, ship stays visible on the right */}
+    <section className="relative min-h-[100dvh] flex items-end pt-24 pb-10 overflow-hidden bg-primary">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {allowMotion ? (
+          <video
+            src="/videos/hero-bg.mp4"
+            poster="/images/hero-ship.webp"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        ) : (
+          <img
+            src="/images/hero-ship.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        )}
+        {/* Left-to-right navy gradient for text contrast, video stays visible on the right */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/55 to-primary/10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-primary/30"></div>
       </div>
