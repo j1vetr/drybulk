@@ -1,168 +1,204 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  Ship,
-  TrendingUp,
-  Handshake,
-  MapPin,
-  Compass,
-  Wrench,
-  ArrowRight,
-  Headphones,
-} from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Ship, TrendingUp, Handshake, MapPin, Compass, Wrench } from 'lucide-react';
 
-const services = [
+const SERVICES = [
   {
-    icon: <Ship className="w-6 h-6" />,
     title: 'Shipping',
-    description: 'Safe and efficient sea transport for dry bulk, breakbulk, project cargo, and general cargo.',
-    image: '/images/services-shipping.webp',
+    desc: 'Safe, efficient sea transport for dry bulk and general cargo.',
+    icon: Ship,
+    image: '/images/services/shipping.jpg',
   },
   {
-    icon: <TrendingUp className="w-6 h-6" />,
     title: 'Chartering',
-    description: 'Tailored chartering solutions backed by market expertise and a reliable vessel network.',
-    image: '/images/services-chartering.webp',
+    desc: 'Tailored chartering backed by market expertise and a trusted network.',
+    icon: TrendingUp,
+    image: '/images/services/chartering.jpg',
   },
   {
-    icon: <Handshake className="w-6 h-6" />,
     title: 'Brokering',
-    description: 'Expert negotiation and commercial support connecting shipowners and charterers.',
-    image: '/images/services-brokering.webp',
+    desc: 'Expert negotiation connecting shipowners and charterers.',
+    icon: Handshake,
+    image: '/images/services/brokering.jpg',
   },
   {
-    icon: <MapPin className="w-6 h-6" />,
     title: 'Port Agency',
-    description: 'Efficient, responsive, and proactive port services to ensure smooth port calls.',
-    image: '/images/services-port-agency.webp',
+    desc: 'Responsive port services ensuring smooth calls, every time.',
+    icon: MapPin,
+    image: '/images/services/port-agency.jpg',
   },
   {
-    icon: <Compass className="w-6 h-6" />,
     title: 'Ship Management',
-    description: 'Professional technical and commercial management for safe and efficient operations.',
-    image: '/images/services-ship-management.webp',
+    desc: 'Technical and commercial management for efficient operations.',
+    icon: Compass,
+    image: '/images/services/ship-management.jpg',
   },
   {
-    icon: <Wrench className="w-6 h-6" />,
-    title: 'Ship Repair & Maintenance',
-    description: 'Coordinated repair supervision, docking support, and technical assistance.',
-    image: '/images/services-ship-repair.webp',
+    title: 'Ship Repair',
+    desc: 'Coordinated docking, repair supervision, and technical support.',
+    icon: Wrench,
+    image: '/images/services/ship-repair.jpg',
   },
 ];
 
+const INK = '#8FB8DE';
+const PAPER = '#0A2540';
+
 export function Services() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
-              Our Services
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1] mb-4">
-              Comprehensive Maritime Solutions
-            </h2>
-            <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
-              From ocean freight to complete vessel management, we provide integrated services tailored to your business needs.
-            </p>
-          </motion.div>
+    <section id="services" className="relative">
+      <div
+        className="w-full h-[560px] sm:h-[640px] lg:h-[760px] flex overflow-hidden relative"
+        style={{ backgroundColor: PAPER, fontFamily: "'Inter', sans-serif" }}
+      >
+        {/* Blueprint grid texture */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.35] z-10"
+          style={{
+            backgroundImage: `linear-gradient(${INK}22 1px, transparent 1px), linear-gradient(90deg, ${INK}22 1px, transparent 1px)`,
+            backgroundSize: '24px 24px',
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.25] z-10"
+          style={{
+            backgroundImage: `linear-gradient(${INK}33 1px, transparent 1px), linear-gradient(90deg, ${INK}33 1px, transparent 1px)`,
+            backgroundSize: '120px 120px',
+          }}
+        />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative aspect-[16/10] lg:aspect-[16/9]"
-          >
-            <img
-              src="/images/services-hero.webp"
-              alt="Drybulk Pioneer cargo ship sailing at sea"
-              className="absolute inset-0 w-full h-full object-cover rounded-2xl"
-              style={{
-                maskImage: 'linear-gradient(to right, transparent, black 18%)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%)',
+        {SERVICES.map((s, i) => {
+          const isActive = i === active;
+          const Icon = s.icon;
+          return (
+            <div
+              key={s.title}
+              onClick={() => setActive(i)}
+              role="button"
+              tabIndex={0}
+              aria-pressed={isActive}
+              aria-label={`Show ${s.title} details`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActive(i);
+                }
               }}
-            />
-          </motion.div>
-        </div>
-
-        {/* Service cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-14 md:mb-16">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-              className="group flex bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+              style={{ flexGrow: isActive ? 14 : 1, flexBasis: 0, minWidth: 44 }}
+              className="relative h-full cursor-pointer transition-[flex-grow] duration-[550ms] ease-[cubic-bezier(0.65,0,0.35,1)] group focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white/80 focus-visible:z-20"
             >
-              <div className="relative z-10 w-[58%] sm:w-[56%] flex flex-col pl-6 pr-4 py-6">
-                <div className="w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-3">
-                  {service.icon}
-                </div>
-                <h3 className="text-primary font-bold text-lg mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
-                  {service.description}
-                </p>
-                <a
-                  href="#contact"
-                  aria-label={`Learn more about ${service.title}`}
-                  className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold hover:gap-2.5 transition-all"
-                >
-                  Learn more
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
-              <div className="relative w-[42%] sm:w-[44%] overflow-hidden">
+              {/* Cyanotype-duotone photo background */}
+              <div className="absolute inset-0 overflow-hidden">
                 <div
-                  className="absolute inset-y-0 -left-8 right-0"
-                  style={{ clipPath: 'polygon(22% 0, 100% 0, 100% 100%, 0 100%)' }}
-                >
-                  <img
-                    src={service.image}
-                    alt={`${service.title} service`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
+                  className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out"
+                  style={{
+                    backgroundImage: `url(${s.image})`,
+                    filter: isActive
+                      ? 'grayscale(100%) contrast(1.2) brightness(1.05)'
+                      : 'grayscale(100%) contrast(1.1) brightness(0.6)',
+                    transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                  }}
+                />
+                {/* Duotone color layer: recolors the grayscale photo into the blueprint blue */}
+                <div className="absolute inset-0" style={{ backgroundColor: '#3F8FD9', mixBlendMode: 'color' }} />
+                {/* Base wash to keep it dark and legible */}
+                <div className="absolute inset-0" style={{ backgroundColor: `${PAPER}${isActive ? '40' : '80'}` }} />
               </div>
-            </motion.div>
-          ))}
-        </div>
 
-        {/* CTA bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative bg-primary rounded-2xl overflow-hidden px-6 py-6 md:px-10 md:py-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
-        >
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-accent">
-              <Headphones className="w-6 h-6" />
+              {/* Panel border, dashed like a drafting sheet division */}
+              {i !== 0 && (
+                <div
+                  className="absolute left-0 top-0 bottom-0 w-px z-10"
+                  style={{
+                    backgroundImage: `linear-gradient(${INK}66 60%, transparent 0%)`,
+                    backgroundSize: '1px 10px',
+                  }}
+                />
+              )}
+
+              {/* Corner crop marks */}
+              <div
+                className="absolute top-4 left-2 w-2 h-2 border-t border-l pointer-events-none z-10"
+                style={{ borderColor: `${INK}88` }}
+              />
+              <div
+                className="absolute bottom-4 left-2 w-2 h-2 border-b border-l pointer-events-none z-10"
+                style={{ borderColor: `${INK}88` }}
+              />
+
+              {/* Collapsed content */}
+              <div
+                className={`absolute inset-0 flex flex-col items-center justify-between py-6 sm:py-10 z-10 transition-opacity duration-300 ${
+                  isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                }`}
+              >
+                <span className="w-8" />
+                <span
+                  className="whitespace-nowrap uppercase text-sm sm:text-lg lg:text-2xl tracking-[0.1em] sm:tracking-[0.15em] font-bold group-hover:text-white transition-colors"
+                  style={{ writingMode: 'vertical-rl', color: INK }}
+                >
+                  {s.title}
+                </span>
+                <Icon size={18} strokeWidth={1.25} style={{ color: `${INK}aa` }} className="hidden sm:block" />
+                <span className="w-8 sm:hidden" />
+              </div>
+
+              {/* Expanded content */}
+              <AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.35, delay: isActive ? 0.2 : 0 }}
+                    className="absolute inset-0 p-6 sm:p-10 lg:p-14 flex flex-col justify-end z-10"
+                  >
+                    {/* Bottom scrim for text legibility over the photo */}
+                    <div
+                      className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                      style={{ background: `linear-gradient(to top, ${PAPER}f2 0%, ${PAPER}b0 40%, transparent 100%)` }}
+                    />
+                    {/* Ruler ticks along the top */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-8 hidden sm:flex items-end"
+                      style={{ borderBottom: `1px solid ${INK}55` }}
+                    >
+                      {Array.from({ length: 24 }).map((_, t) => (
+                        <div key={t} className="flex-1 flex justify-start">
+                          <div style={{ width: 1, height: t % 4 === 0 ? 10 : 5, background: `${INK}66` }} />
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="max-w-xl relative z-10">
+                      <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                        <div
+                          className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center border"
+                          style={{ borderColor: `${INK}66` }}
+                        >
+                          <Icon size={18} strokeWidth={1.25} color={INK} />
+                        </div>
+                      </div>
+
+                      <h3 className="text-2xl sm:text-4xl lg:text-6xl font-semibold tracking-tight leading-none mb-3 sm:mb-6 text-white">
+                        {s.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm lg:text-base leading-relaxed" style={{ color: `${INK}dd` }}>
+                        <span className="tracking-[0.2em]" style={{ color: INK }}>
+                          SPEC:{' '}
+                        </span>
+                        {s.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-            <div>
-              <p className="text-white font-bold text-lg mb-0.5">Need a customized solution?</p>
-              <p className="text-white/60 text-sm">Our team is here to support your unique requirements.</p>
-            </div>
-          </div>
-          <a
-            href="#contact"
-            className="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-primary text-sm font-bold rounded-lg hover:bg-white/90 transition-colors group"
-          >
-            Get in Touch
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
+          );
+        })}
       </div>
     </section>
   );
