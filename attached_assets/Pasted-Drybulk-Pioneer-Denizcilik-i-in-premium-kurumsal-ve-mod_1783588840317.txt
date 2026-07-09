@@ -1,0 +1,29 @@
+Drybulk Pioneer Denizcilik için premium, kurumsal ve modern bir one page web sitesi tasarla.
+
+Referans olarak beyazfleet.com tarzındaki denizcilik sitesini baz al ama birebir kopyalama. Tasarım çok daha profesyonel, daha temiz, daha güçlü ve uluslararası bir denizcilik firmasına yakışacak seviyede olsun. Site; güven, güç, operasyonel disiplin, global taşımacılık ve kurumsallık hissi vermeli.
+
+Portal Login alanı olmayacak. Site sadece tanıtım amaçlı one page olacak.
+
+Genel tasarım dili koyu lacivert, beyaz, gri ve mavi tonlarında olsun. Denizcilik sektörüne uygun ciddi ama modern bir görünüm istiyorum. Çok basit kurumsal site gibi değil, büyük ölçekli bir maritime / dry bulk şirketi gibi hissettirsin. Geniş boşluklar, büyük tipografi, kaliteli gemi görselleri, şık kart yapıları, hafif animasyonlar ve premium geçişler kullanılmalı.
+
+Header alanı sabit ve şık olmalı. Sol tarafta logo, sağ tarafta About, Fleet, Services, Contact menüleri ve dikkat çeken bir “Request Quote” butonu yer alsın. Portal Login butonu kesinlikle olmasın.
+
+Hero alanı sitenin en güçlü kısmı olsun. Arka planda boğaz, açık deniz veya yük gemileriyle ilgili etkileyici, koyu overlay uygulanmış büyük bir görsel olsun. Üzerinde büyük ve güçlü bir başlık yer alsın. Mesaj; denizcilik, güvenilir taşıma, global operasyon ve müşteri odaklı hizmet hissi vermeli. Hero kısmında “Request Quote” ve “Explore Services” gibi iki buton olabilir. Arka planda çok hafif büyük yazı veya maritime detayları kullanılabilir ama göz yormasın.
+
+About bölümü klasik düz yazı gibi olmasın. Drybulk Pioneer’ın güvenilir, deneyimli, çözüm odaklı ve global çalışan bir denizcilik şirketi olduğu premium bir dille anlatılsın. Yanında veya altında 4 adet güçlü istatistik kartı yer alsın. Örneğin yıllık deneyim, başarılı operasyon, müşteri memnuniyeti, 7/24 operasyonel destek gibi değerler gösterilsin. Kartlar sade ama etkileyici olmalı.
+
+Fleet bölümü sitenin en önemli alanlarından biri gibi tasarlansın. Gemiler modern kart yapısıyla gösterilsin. Kartlarda büyük gemi görseli, gemi adı, tipi, kapasite, inşa yılı ve kısa detaylar yer alsın. Kartlar düz beyaz kutu gibi değil, premium maritime katalog havasında olsun. Görseller yüksek kaliteli, kartlar gölgeli, hover efektli ve temiz hizalanmış olmalı.
+
+Services bölümü beyazfleet.com’daki gibi kart mantığında olabilir ama daha modern ve güçlü görünmeli. Shipping, Chartering, Brokering, Port Agency, Ship Management, Ship Repair & Maintenance gibi hizmetler şık ikonlar ve kaliteli görsellerle sunulsun. Her hizmet kartı kısa, net ve kurumsal açıklama içersin. Kartların tasarımı sıradan olmamalı; büyük görsel, ikon, başlık ve açıklama dengesi iyi kurulmalı.
+
+Araya “Why Choose Us” tarzında güven veren bir bölüm eklenebilir. Burada Safety First, Reliability, Partnership, Expert Team gibi değerler gösterilsin. Bu alan çok metin yoğun olmasın, premium ikonlu kartlarla anlatılsın.
+
+Request a Quote / Contact bölümü çok temiz ve kurumsal olsun. Sol tarafta teklif formu, sağ tarafta iletişim bilgileri yer alsın. Form alanları sade, modern ve kullanımı kolay görünsün. İletişim tarafında telefon, e-posta, ofis lokasyonu ve çalışma saatleri gösterilsin. Ayrıca 7/24 operasyonel destek vurgusu ayrı bir mavi kutu içinde dikkat çekebilir.
+
+Footer alanı sade ama kaliteli olsun. Logo, kısa açıklama, hızlı menüler, hizmetler ve iletişim bilgileri yer alsın. Alt kısımda copyright alanı olsun. Footer gereksiz kalabalık olmasın.
+
+Tüm site tek sayfa olacak, menüler aynı sayfa içindeki bölümlere kaydıracak şekilde düşünülmeli. Tasarım masaüstünde çok güçlü, mobilde ise kusursuz ve modern görünmeli. Mobil görünümde kartlar, menüler, hero alanı ve formlar çok temiz hizalanmalı.
+
+Sitenin genel hissi: “uluslararası denizcilik firması”, “premium corporate maritime”, “güvenilir dry bulk taşımacılığı”, “modern ve güçlü marka imajı” olmalı.
+
+Metinler İngilizce olsun. İçerik profesyonel, kısa ve kurumsal bir dille yazılsın. Gereksiz uzun paragraflar kullanılmasın. Görsel kalite çok önemli; gemi, deniz, liman, operasyon ve boğaz temalı kaliteli görsellerle tasarım zenginleştirilsin.

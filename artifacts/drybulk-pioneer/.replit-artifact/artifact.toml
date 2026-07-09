@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Drybulk Pioneer"
+version = "1.0.0"
+id = "artifacts/drybulk-pioneer"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24120
+
+[services.development]
+run = "pnpm --filter @workspace/drybulk-pioneer run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/drybulk-pioneer", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/drybulk-pioneer/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24120"
+BASE_PATH = "/"
