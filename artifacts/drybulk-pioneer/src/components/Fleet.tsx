@@ -11,15 +11,15 @@ const VESSEL_SEGMENTS = [
 ];
 
 const CARGOES = [
-  'Grain and Agricultural Products',
-  'Fertiliser and Urea',
+  'Grain And Agricultural Products',
+  'Fertiliser And Urea',
   'Sulphur',
-  'Coal and Petcoke',
+  'Coal And Petcoke',
   'Minerals',
-  'Cement and Clinker',
+  'Cement And Clinker',
   'Steel Products',
   'Sugar',
-  'Bagged and Bulk Commodities',
+  'Bagged And Bulk Commodities',
 ];
 
 const INK = '#8FB8DE';

@@ -54,7 +54,7 @@ export function About() {
               chartering and post-fixture support across international trades.
             </p>
             <p className="text-muted-foreground text-base leading-relaxed mb-5">
-              Our team brings decades of combined experience in the dry bulk sector — with deep
+              Our team brings decades of combined experience in the dry bulk sector, with deep
               expertise across Handysize to Kamsarmax vessel segments and major commodity markets
               including grain, fertiliser, coal and steel products.
             </p>
