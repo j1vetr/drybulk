@@ -1,0 +1,208 @@
+mevcut haliyle site biraz tanıtım/landing page
+seviyesinde kalıyor.
+Ziyaret eden bir armatör, kiracı, broker, tedarikçi
+veya banka şirket hakkında daha fazla bilgiye
+ihtiyaç duyabilir.
+Aşağıdaki konuların değerlendirilmesini rica
+ederiz:
+Şirket faaliyet alanının daha açık anlatılması
+"Dry Bulk Shipping & Chartering" ifadesi doğru
+olmakla birlikte biraz genel kalıyor.
+Şirketin aşağıdaki alanlarda faaliyet gösterdiği
+daha net anlatılabilir:
+Dry bulk chartering
+Commercial operation
+Voyage estimation and freight evaluation
+Operations and post-fixture follow-up
+Commercial management
+Burada şirketi olduğundan büyük veya farklı
+göstermeden, tam olarak ne yaptığımızı
+açıklayan kısa ve net bir tanım hazırlanması
+uygun olur.
+Örneğin ana sayfada buna benzer bir ifade
+kullanılabilir:
+"Drybulk Pioneer is an Istanbul-based dry bulk
+shipping and chartering company providing
+commercial operation, chartering and postfixture support across international trades."
+About Us bölümünün geliştirilmesi
+Şirket hakkında aşağıdaki temel bilgiler
+bulunmalı:
+Şirketin İstanbul merkezli olduğu
+Kuruluş yılı
+Temel faaliyet alanları
+Yönetim ekibinin denizcilik ve dry bulk tecrübesi
+Çalışılan başlıca bölgeler ve gemi segmentleri
+Şirket yeni kurulduğu için, uzun şirket geçmişi
+varmış gibi bir anlatımdan kaçınılmalı. Bunnu
+yerine yönetim ekibinin sektörel tecrübesi ön
+plana çıkarılabilir.
+Hizmetlerin ayrı başlıklar altında gösterilmesi
+Services bölümü daha detaylı ve anlaşılır hale
+getirilebilir.
+Örneğin:
+Dry Bulk Chartering
+Voyage charter
+Time charter
+Cargo and vessel matching
+Freight negotiation
+Market evaluation
+Commercial Operations
+Voyage estimation
+TCE and profitability analysis
+Bunker planning
+Trade and employment evaluation
+Charter-party follow-up
+Post-Fixture and Operations
+Voyage instructions
+Port and agency coordination
+Freight and hire follow-up
+Laytime and demurrage
+Operational reporting
+Sadece gerçekten sunduğumuz hizmetlerin
+eklenmesi önemlidir.
+Gemi tipleri, yükler ve ticaret bölgeleri
+Siteye hangi segmentlerde çalıştığımızı gösteren
+bir bölüm eklenmesi faydalı olur.
+Örneğin:
+Vessel Segments
+Handysize
+Handymax
+Supramax
+Ultramax
+Panamax / Kamsarmax
+Cargoes
+Grain and agricultural products
+Fertiliser and urea
+Sulphur
+Coal and petcoke
+Minerals
+Cement and clinker
+Steel products
+Sugar
+Bagged and bulk commodities
+Trading Areas
+Mediterranean
+Black Sea
+Arabian Gulf
+Red Sea
+Indian Subcontinent
+East and South Africa
+Southeast Asia
+Far East
+South America
+Burada "our fleet" gibi bir ifade, doğrudan sahip
+olunan veya yönetilen bir filo yoksa
+kullanılmamalı. Bunun yerine "vessel segments
+we operate in" veya "market coverage" gibi
+ifadeler tercih edilebilir.
+Ana sayfada daha net yönlendirmeler bulunması
+Ana sayfada ziyaretçiyi yönlendiren butonlar
+eklenebilir:
+Contact Chartering
+Submit a Cargo Enquiry
+Offer a Vessel
+Contact Operations
+Genel iletişim formunun yanında chartering ve
+operations için ayrı iletişim seçenekleri
+bulunması daha uygun olur.
+İletişim bilgilerinin geliştirilmesi
+Aşağıdaki departman e-posta adresleri
+eklenebilir:
+info@
+chartering@
+operations@
+accounts@
+claims@
+Ayrıca şirketin:
+Tam ticari unvanı
+Ofis adresi
+Telefon numarası
+Genel e-posta adresi
+footer kısmında açık şekilde yer almalı.
+Yönetim veya ekip bilgisi
+Şirketi ziyaret eden kişiler çoğunlukla şirketin
+arkasındaki ekibi görmek ister.
+Bu nedenle en azından temel yönetim kadrosu
+için:
+İsim
+Pozisyon
+Kısa deneyim bilgisi
+eklenmesi güvenilirliği artıracaktır.
+Çok detaylı CV'ye gerek yoktur. Kısa ve sade bir
+tanıtım yeterlidir.
+Compliance ve kurumsal güven bölümü
+Kısa bir HSEQ / Compliance bölümü eklenebilir:
+Burada aşağıdaki konulara değinilebilir:
+Sanctions compliance
+Anti-bribery and corruption
+Counterparty screening
+Responsible business conduct
+Environmental awareness
+Data protection
+Bu bölüm çok uzun olmamalı ancak şirketin
+kurumsal çalıştığını göstermeli.
+Yasal sayfalar
+Footer alanına aşağıdaki sayfaların eklenmesi
+uygun olur:
+Privacy Policy
+KVKK Information Notice
+Cookie Policy
+Terms of Use
+Corporate Information
+Çerez bildiriminin de siteye eklenmesi gerekir.
+Google ve arama motoru görünürlüğü
+Site şu an şirket adıyla yapılan aramalarda
+yeterince görünür değil.
+Bu nedenle aşağıdaki teknik konuların kontrol
+edilmesini rica ederiz:
+Site içeriğinin Google tarafından okunabilir
+olması
+Sayfa başlıkları ve açıklamaların düzenlenmesi
+XML sitemap oluşturulması
+Google Search Console bağlantısı
+Mobil hız ve performans kontrolü
+Görsellerin optimize edilmesi
+Sayfa başlıklarında doğru H1/H2 yapısının
+kullanılması
+Site metinlerinin yalnızca animasyon veya görsel
+içinde kalmaması
+Site görsel olarak açılıyor olsa da arama
+motorlarının metinleri okuyamaması ihtimali
+bulunuyor. Bunun teknik olarak kontrol
+edilmesini rica ederiz.
+Marka kullanımının tutarlı olması
+Pioneer ismini kullanan başka denizcilik
+şirketleri de bulunduğu için sitenin her yerinde
+mümkün olduğunca tam isim kullanılmalı:
+"Drybulk Pioneer"
+Sadece "Pioneer" şeklinde kullanım azaltılabilir.
+Logo, şirket adı, sosyal medya hesapları ve eposta imzalarında aynı marka yapısının
+kullanılması faydalı olacaktır.
+Genel sayfa yapısı önerisi
+Aşağıdaki menü yapısı değerlendirilebilir:
+Home
+About Us
+Services
+Vessel Segments & Cargoes
+Trading Areas
+HSEQ & Compliance
+News / Market Insights
+Careers
+Contact
+Özetle mevcut tasarımı tamamen
+değiştirmekten ziyade, içeriğin daha dolu, güven
+veren ve denizcilik sektörüne özgü hale
+getirilmesini istiyoruz.
+Siteyi ziyaret eden bir kişinin aşağıdaki sorulara
+kısa sürede cevap bulabilmesi önemli:
+Şirket kimdir?
+Tam olarak ne iş yapmaktadır?
+Hangi gemi tiplerinde çalışmaktadır?
+Hangi yük ve bölgelerde faaliyet göstermektedir?
+Kimlerle iletişim kurulmalıdır?
+Şirketin arkasındaki ekip kimdir?
+Kurumsal ve güvenilir bir yapı var mıdır?
+Bu başlıklar üzerinden bir revizyon önerisi ve
+mümkünse sayfa bazında içerik taslağı
+paylaşmanızı rica ederiz.
+Teşekkürler.
