@@ -1,36 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { TradingAreasMap } from '@/components/TradingAreasMap';
 
 const VESSEL_SEGMENTS = [
-  { name: 'Handysize',        dwt: '~25,000–40,000 DWT' },
-  { name: 'Handymax',         dwt: '~40,000–55,000 DWT' },
-  { name: 'Supramax',         dwt: '~55,000–65,000 DWT' },
-  { name: 'Ultramax',         dwt: '~60,000–65,000 DWT' },
-  { name: 'Panamax / Kamsarmax', dwt: '~65,000–82,000 DWT' },
+  { name: 'Handysize',           dwt: '~25,000-40,000 DWT' },
+  { name: 'Handymax',            dwt: '~40,000-55,000 DWT' },
+  { name: 'Supramax',            dwt: '~55,000-65,000 DWT' },
+  { name: 'Ultramax',            dwt: '~60,000-65,000 DWT' },
+  { name: 'Panamax / Kamsarmax', dwt: '~65,000-82,000 DWT' },
 ];
 
 const CARGOES = [
-  'Grain and agricultural products',
-  'Fertiliser and urea',
+  'Grain and Agricultural Products',
+  'Fertiliser and Urea',
   'Sulphur',
-  'Coal and petcoke',
+  'Coal and Petcoke',
   'Minerals',
-  'Cement and clinker',
-  'Steel products',
+  'Cement and Clinker',
+  'Steel Products',
   'Sugar',
-  'Bagged and bulk commodities',
-];
-
-const TRADING_AREAS = [
-  'Mediterranean',
-  'Black Sea',
-  'Arabian Gulf',
-  'Red Sea',
-  'Indian Subcontinent',
-  'East and South Africa',
-  'Southeast Asia',
-  'Far East',
-  'South America',
+  'Bagged and Bulk Commodities',
 ];
 
 const INK = '#8FB8DE';
@@ -92,13 +81,16 @@ export function Fleet() {
             className="absolute inset-0 w-full h-full object-cover object-center" />
         )}
         <div className="absolute inset-0" style={{ backgroundColor: `${PAPER}cc` }} />
-        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${PAPER} 0%, ${PAPER}99 50%, ${PAPER}55 100%)` }} />
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${PAPER} 0%, ${PAPER}99 50%, ${PAPER}55 100%)` }}
+        />
       </div>
 
       {/* Blueprint grid */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none opacity-[0.08] z-[1]"
+        className="absolute inset-0 pointer-events-none opacity-[0.07] z-[1]"
         style={{
           backgroundImage: `linear-gradient(${INK} 1px, transparent 1px), linear-gradient(90deg, ${INK} 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
@@ -126,18 +118,24 @@ export function Fleet() {
           </p>
         </motion.div>
 
-        {/* Three columns */}
-        <div className="grid md:grid-cols-3 gap-10 md:gap-8 lg:gap-14">
+        {/* Top row: Vessel Segments + Cargoes */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 mb-14 md:mb-20">
           {/* Vessel Segments */}
           <Column title="Vessel Segments We Operate In" eyebrow="Ship Types" delay={0}>
-            <ul className="space-y-3">
+            <ul className="space-y-0">
               {VESSEL_SEGMENTS.map((v) => (
-                <li key={v.name}
-                  className="flex items-start justify-between gap-4 border-b py-2.5"
+                <li
+                  key={v.name}
+                  className="flex items-center justify-between gap-4 border-b py-3"
                   style={{ borderColor: `${INK}22` }}
                 >
                   <span className="text-white text-sm font-semibold">{v.name}</span>
-                  <span className="text-xs shrink-0 mt-0.5" style={{ color: `${INK}99` }}>{v.dwt}</span>
+                  <span
+                    className="text-xs font-mono shrink-0"
+                    style={{ color: `${INK}88` }}
+                  >
+                    {v.dwt}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -145,34 +143,43 @@ export function Fleet() {
 
           {/* Cargoes */}
           <Column title="Cargoes" eyebrow="Commodities" delay={0.12}>
-            <ul className="space-y-2.5">
+            <ul className="space-y-0">
               {CARGOES.map((c) => (
-                <li key={c}
-                  className="flex items-center gap-3 text-sm border-b py-2"
+                <li
+                  key={c}
+                  className="flex items-center gap-3 text-sm border-b py-2.5"
                   style={{ borderColor: `${INK}22`, color: `${INK}dd` }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: `${INK}88` }} />
+                  <span
+                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                    style={{ backgroundColor: `${INK}77` }}
+                  />
                   {c}
                 </li>
               ))}
             </ul>
           </Column>
-
-          {/* Trading Areas */}
-          <Column title="Trading Areas" eyebrow="Geographies" delay={0.24}>
-            <ul className="space-y-2.5">
-              {TRADING_AREAS.map((t) => (
-                <li key={t}
-                  className="flex items-center gap-3 text-sm border-b py-2"
-                  style={{ borderColor: `${INK}22`, color: `${INK}dd` }}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: `${INK}88` }} />
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </Column>
         </div>
+
+        {/* Divider */}
+        <div className="w-full h-px mb-14 md:mb-16" style={{ backgroundColor: `${INK}18` }} />
+
+        {/* Trading Areas - full width map */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] mb-2" style={{ color: `${INK}99` }}>
+            Geographies
+          </p>
+          <h3 className="text-white text-xl sm:text-2xl font-bold mb-5 leading-tight">
+            Trading Areas
+          </h3>
+          <div className="w-6 h-[2px] mb-8" style={{ backgroundColor: INK }} />
+          <TradingAreasMap />
+        </motion.div>
       </div>
     </section>
   );
