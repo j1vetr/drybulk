@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, ShieldCheck, ShieldPlus } from 'lucide-react';
+import { ArrowRight, Ship, BarChart2, FileCheck } from 'lucide-react';
 
 const stats = [
-  { icon: Globe, title: 'Global Operations', subtitle: 'Worldwide Coverage' },
-  { icon: ShieldCheck, title: 'Reliable Service', subtitle: 'On-Time Performance' },
-  { icon: ShieldPlus, title: 'Safety First', subtitle: 'Committed To Safety' },
+  { icon: Ship,       title: 'Dry Bulk Chartering',      subtitle: 'Voyage & Time Charter' },
+  { icon: BarChart2,  title: 'Commercial Operations',    subtitle: 'Estimation & Analysis' },
+  { icon: FileCheck,  title: 'Post-Fixture Support',     subtitle: 'Laytime & Demurrage' },
 ];
 
 export function Hero() {
@@ -43,9 +43,8 @@ export function Hero() {
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
         )}
-        {/* Left-to-right navy gradient for text contrast, video stays visible on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/55 to-primary/10"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-primary/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/55 to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-primary/30" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12">
@@ -63,23 +62,34 @@ export function Hero() {
             Dry Bulk Pioneer<br />Shipping Experts
           </h1>
 
-          <p className="text-base md:text-lg text-white/80 max-w-lg mb-8 font-light leading-relaxed">
-            Delivering reliable, efficient, and client-focused maritime solutions across the globe.
+          <p className="text-base md:text-lg text-white/80 max-w-xl mb-8 font-light leading-relaxed">
+            An Istanbul-based dry bulk shipping and chartering company providing commercial
+            operation, chartering and post-fixture support across international trades.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-start gap-3 mb-12">
+          <div className="flex flex-col sm:flex-row items-start gap-3 mb-4">
             <a
               href="#contact"
               className="w-full sm:w-auto px-6 py-3 bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-colors flex items-center justify-center gap-2 group"
             >
-              Request Quote
+              Submit a Cargo Enquiry
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#services"
+              href="#contact"
               className="w-full sm:w-auto px-6 py-3 bg-transparent border border-white/70 text-white font-semibold text-sm hover:bg-white/10 transition-colors flex items-center justify-center"
             >
-              Explore Services
+              Offer a Vessel
+            </a>
+          </div>
+
+          <div className="flex flex-wrap gap-4 mb-12">
+            <a href="#contact" className="text-white/60 text-xs hover:text-white transition-colors underline-offset-2 hover:underline">
+              Contact Chartering
+            </a>
+            <span className="text-white/20 text-xs">|</span>
+            <a href="#contact" className="text-white/60 text-xs hover:text-white transition-colors underline-offset-2 hover:underline">
+              Contact Operations
             </a>
           </div>
         </motion.div>
@@ -93,18 +103,16 @@ export function Hero() {
           {stats.map((stat, i) => {
             const isLastItem = i === stats.length - 1;
             return (
-            <div
-              key={stat.title}
-              className={`flex items-center gap-3 pr-6 border-white/20 ${
-                !isLastItem ? 'border-r' : ''
-              }`}
-            >
-              <stat.icon className="w-6 h-6 text-accent shrink-0" strokeWidth={1.75} />
-              <div className="leading-tight">
-                <div className="text-white text-sm font-semibold">{stat.title}</div>
-                <div className="text-white/60 text-xs">{stat.subtitle}</div>
+              <div
+                key={stat.title}
+                className={`flex items-center gap-3 pr-6 border-white/20 ${!isLastItem ? 'border-r' : ''}`}
+              >
+                <stat.icon className="w-6 h-6 text-accent shrink-0" strokeWidth={1.75} />
+                <div className="leading-tight">
+                  <div className="text-white text-sm font-semibold">{stat.title}</div>
+                  <div className="text-white/60 text-xs">{stat.subtitle}</div>
+                </div>
               </div>
-            </div>
             );
           })}
         </motion.div>

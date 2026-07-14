@@ -2,11 +2,14 @@ import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
-import { Fleet } from '@/components/Fleet';
+import { Team } from '@/components/Team';
 import { Services } from '@/components/Services';
+import { Fleet } from '@/components/Fleet';
 import { Trust } from '@/components/Trust';
+import { Compliance } from '@/components/Compliance';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { CookieBanner } from '@/components/CookieBanner';
 
 export default function Home() {
   return (
@@ -15,12 +18,15 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Trust />
-        <Fleet />
         <Services />
+        <Fleet />
+        <Team />
+        <Trust />
+        <Compliance />
         <Contact />
       </main>
       <Footer />
+      <CookieBanner />
     </div>
   );
 }
