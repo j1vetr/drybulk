@@ -18,12 +18,12 @@ export function Footer() {
           <div>
             <h5 className="font-bold uppercase tracking-wider mb-4 text-xs">Quick Links</h5>
             <ul className="space-y-2">
-              <li><a href="#about"      className="text-white/60 hover:text-white transition-colors text-xs">About Us</a></li>
-              <li><a href="#services"   className="text-white/60 hover:text-white transition-colors text-xs">Services</a></li>
-              <li><a href="#segments"   className="text-white/60 hover:text-white transition-colors text-xs">Vessel Segments &amp; Cargoes</a></li>
-              <li><a href="#team"       className="text-white/60 hover:text-white transition-colors text-xs">Our Team</a></li>
-              <li><a href="#compliance" className="text-white/60 hover:text-white transition-colors text-xs">HSEQ &amp; Compliance</a></li>
-              <li><a href="#contact"    className="text-white/60 hover:text-white transition-colors text-xs">Contact</a></li>
+              <li><a href="/#about"      className="text-white/60 hover:text-white transition-colors text-xs">About Us</a></li>
+              <li><a href="/#services"   className="text-white/60 hover:text-white transition-colors text-xs">Services</a></li>
+              <li><a href="/#segments"   className="text-white/60 hover:text-white transition-colors text-xs">Vessel Segments &amp; Cargoes</a></li>
+              <li><a href="/#team"       className="text-white/60 hover:text-white transition-colors text-xs">Our Team</a></li>
+              <li><a href="/#compliance" className="text-white/60 hover:text-white transition-colors text-xs">HSEQ &amp; Compliance</a></li>
+              <li><a href="/#contact"    className="text-white/60 hover:text-white transition-colors text-xs">Contact</a></li>
             </ul>
           </div>
 

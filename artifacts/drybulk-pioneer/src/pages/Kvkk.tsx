@@ -1,18 +1,26 @@
 import React from 'react';
-import { Navbar } from '@/components/Navbar';
+import { LegalNavbar } from '@/components/LegalNavbar';
 import { Footer } from '@/components/Footer';
 
 export default function Kvkk() {
   return (
     <div className="bg-white min-h-screen font-sans text-foreground">
-      <Navbar />
+      <LegalNavbar />
       <div className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-6 md:px-12">
           <p className="text-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Legal</p>
           <h1 className="text-3xl md:text-4xl font-bold text-white">KVKK Aydınlatma Metni</h1>
         </div>
       </div>
-      <main className="container mx-auto px-6 md:px-12 py-16 max-w-3xl prose prose-slate">
+      <div className="container mx-auto px-6 md:px-12 max-w-3xl pt-6 pb-1">
+        <a
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+        >
+          ← Back to Drybulk Pioneer
+        </a>
+      </div>
+      <main className="container mx-auto px-6 md:px-12 pt-8 pb-16 max-w-3xl prose prose-slate">
         <p className="text-muted-foreground text-sm mb-8">Son güncelleme: Temmuz 2026</p>
 
         <h2>1. Veri Sorumlusu</h2>

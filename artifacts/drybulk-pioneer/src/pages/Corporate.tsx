@@ -1,18 +1,26 @@
 import React from 'react';
-import { Navbar } from '@/components/Navbar';
+import { LegalNavbar } from '@/components/LegalNavbar';
 import { Footer } from '@/components/Footer';
 
 export default function Corporate() {
   return (
     <div className="bg-white min-h-screen font-sans text-foreground">
-      <Navbar />
+      <LegalNavbar />
       <div className="bg-primary pt-32 pb-16">
         <div className="container mx-auto px-6 md:px-12">
           <p className="text-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Legal</p>
           <h1 className="text-3xl md:text-4xl font-bold text-white">Corporate Information</h1>
         </div>
       </div>
-      <main className="container mx-auto px-6 md:px-12 py-16 max-w-3xl">
+      <div className="container mx-auto px-6 md:px-12 max-w-3xl pt-6 pb-1">
+        <a
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
+        >
+          ← Back to Drybulk Pioneer
+        </a>
+      </div>
+      <main className="container mx-auto px-6 md:px-12 pt-8 pb-16 max-w-3xl">
         <div className="grid sm:grid-cols-2 gap-8">
           <div className="border border-gray-100 p-6">
             <h2 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Company Title</h2>
