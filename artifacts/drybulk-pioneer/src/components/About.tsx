@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, BarChart2, FileCheck, Globe } from 'lucide-react';
+import { TrendingUp, BarChart2, FileCheck, Globe, Calculator, MapPin } from 'lucide-react';
 
 const COMPETENCIES = [
   {
@@ -23,13 +23,23 @@ const COMPETENCIES = [
     title: 'Market Coverage',
     desc: 'Active across Mediterranean, Black Sea, Arabian Gulf, Indian Subcontinent and Far East.',
   },
+  {
+    icon: Calculator,
+    title: 'Freight Analysis',
+    desc: 'Detailed TCE modelling, freight benchmarking and cost analysis to protect commercial returns on every fixture.',
+  },
+  {
+    icon: MapPin,
+    title: 'Istanbul: A Maritime Gateway',
+    desc: 'Strategically positioned at the crossroads of Mediterranean and Black Sea trades, with direct access to key regional commodity flows.',
+  },
 ];
 
 export function About() {
   return (
     <section id="about" className="relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-14 lg:gap-16 items-start">
 
           {/* Left column: copy + photo */}
           <motion.div
@@ -39,12 +49,12 @@ export function About() {
             transition={{ duration: 0.8 }}
             className="flex flex-col"
           >
-            <p className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-4">
+            <p className="text-accent text-sm font-bold tracking-[0.22em] uppercase mb-4">
               About Drybulk Pioneer
             </p>
             <div className="w-10 h-[3px] bg-accent mb-6" />
 
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-primary leading-tight mb-6">
               Istanbul-Based Dry Bulk Chartering &amp; Operations
             </h2>
 
@@ -68,18 +78,18 @@ export function About() {
               <img
                 src="/images/about-ship.webp"
                 alt="Drybulk Pioneer bulk carrier at sea"
-                className="w-full h-full max-h-80 object-cover"
+                className="w-full h-full max-h-72 object-cover"
               />
             </div>
           </motion.div>
 
-          {/* Right column: competency cards */}
+          {/* Right column: 6 competency cards — 3 × 2 grid */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:pt-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:pt-4"
           >
             {COMPETENCIES.map((item, index) => {
               const Icon = item.icon;
@@ -89,15 +99,15 @@ export function About() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow p-7 flex flex-col"
+                  transition={{ duration: 0.5, delay: index * 0.07 }}
+                  className="bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md hover:border-accent/20 transition-all duration-300 p-5 flex flex-col group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
-                    <Icon className="w-6 h-6 text-accent" strokeWidth={1.75} />
+                  <div className="w-10 h-10 rounded-lg bg-accent/10 group-hover:bg-accent/15 flex items-center justify-center mb-4 transition-colors duration-300">
+                    <Icon className="w-5 h-5 text-accent" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-primary font-bold text-base mb-3">{item.title}</h3>
-                  <div className="w-8 h-[2px] bg-accent/30 mb-3" />
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  <h3 className="text-primary font-bold text-sm mb-2 leading-snug">{item.title}</h3>
+                  <div className="w-6 h-[2px] bg-accent/30 group-hover:bg-accent/50 mb-2.5 transition-colors duration-300" />
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
                 </motion.div>
               );
             })}

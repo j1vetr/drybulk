@@ -1,0 +1,293 @@
+Birinci aşamada oluşturulan site yapısını ve mevcut projeyi incele.
+
+Şimdi aşağıdaki kurumsal güven, yasal sayfalar, marka tutarlılığı ve teknik SEO revizyonları için ayrıntılı bir uygulama planı oluştur.
+
+ÖNEMLİ GENEL KURALLAR
+
+- Birinci aşamada oluşturulan tasarım ve içerik yapısını bozma.
+- Mevcut siteyi tamamen yeniden tasarlama.
+- Şirketi olduğundan büyük, eski veya farklı gösterme.
+- Gerçek olmayan şirket, ekip, hizmet, sertifika, politika, adres, telefon veya iletişim bilgisi üretme.
+- Aşağıdaki maddeler müşterinin doğrudan talepleridir. Hiçbir talebi atlama veya anlamını değiştirme.
+- Uygulamadan önce mevcut SEO, metadata, route, footer, form, görsel ve mobil performans yapısını incele.
+- Değişiklikleri dosya ve component bazında planla.
+
+1. HSEQ & COMPLIANCE BÖLÜMÜ
+
+Kısa bir HSEQ / Compliance bölümü veya sayfası oluştur.
+
+Bu bölüm çok uzun olmamalı ancak şirketin kurumsal ve kontrollü bir yapıda çalıştığını göstermeli.
+
+Aşağıdaki konulara değinilebilecek bir içerik yapısı hazırla:
+
+- Sanctions compliance
+- Anti-bribery and corruption
+- Counterparty screening
+- Responsible business conduct
+- Environmental awareness
+- Data protection
+
+Bu alanlarda şirketin sahip olmadığı sertifika, lisans, üyelik veya prosedürleri varmış gibi gösterme.
+
+Genel ve gerçekçi kurumsal yaklaşım metinleri kullanılmalı.
+
+Gerekli gerçek bilgiler bulunmuyorsa müşterinin daha sonra doldurabileceği düzenlenebilir içerik alanları oluştur.
+
+2. YASAL SAYFALAR
+
+Footer ve site yapısına aşağıdaki yasal sayfaları ekle:
+
+- Privacy Policy
+- KVKK Information Notice
+- Cookie Policy
+- Terms of Use
+- Corporate Information
+
+Bu sayfalar menüde zorunlu olarak ana menüde görünmek zorunda değildir ancak footer üzerinden erişilebilir olmalı.
+
+Yasal metinler şirketin gerçek bilgilerine göre hazırlanmalı.
+
+Eksik şirket bilgileri veya hukuki detaylar tahmin edilmemeli. Gerekli alanlarda müşterinin veya hukuk danışmanının tamamlaması gereken bilgiler açıkça belirtilmeli.
+
+3. ÇEREZ BİLDİRİMİ
+
+Siteye çerez bildirimi ekle.
+
+Çerez bildirimi:
+
+- Kullanıcıya hangi çerezlerin kullanılabileceğini açıklamalı
+- Cookie Policy sayfasına bağlantı vermeli
+- Gerekli durumlarda kabul veya tercih yönetimi sunmalı
+- Mobil cihazlarda düzgün çalışmalı
+- Sayfanın önemli alanlarını tamamen kapatmamalı
+- Daha önce verilen kullanıcı tercihini uygun şekilde saklamalı
+
+Sitede analitik veya pazarlama çerezleri varsa gerekli izin alınmadan çalıştırılmaması gereken yapıyı değerlendir.
+
+4. FOOTER ŞİRKET BİLGİLERİ
+
+Footer alanında aşağıdaki şirket bilgileri açık şekilde yer almalı:
+
+- Şirketin tam ticari unvanı
+- Ofis adresi
+- Telefon numarası
+- Genel e-posta adresi
+
+Bu bilgiler mevcut projeden veya müşteri tarafından sağlanan gerçek bilgilerden alınmalı.
+
+Eksik bilgi varsa tahmin ederek doldurma. Placeholder veya tamamlanması gereken alan şeklinde belirt.
+
+Footer içerisinde ayrıca aşağıdaki bağlantıları değerlendir:
+
+- About Us
+- Services
+- Vessel Segments & Cargoes
+- Trading Areas
+- HSEQ & Compliance
+- Contact
+- Privacy Policy
+- KVKK Information Notice
+- Cookie Policy
+- Terms of Use
+- Corporate Information
+
+5. MARKA KULLANIMININ TUTARLI OLMASI
+
+Şirket adı site genelinde tutarlı şekilde kullanılmalı.
+
+Pioneer ismini kullanan başka denizcilik şirketleri de bulunduğu için mümkün olan her yerde tam marka adı kullanılmalı:
+
+“Drybulk Pioneer”
+
+Sadece “Pioneer” şeklindeki kullanım azaltılmalı.
+
+Aşağıdaki alanları kontrol et:
+
+- Header
+- Logo çevresindeki metinler
+- Ana sayfa
+- Sayfa başlıkları
+- Footer
+- Formlar
+- Meta title ve description alanları
+- Open Graph alanları
+- Schema verileri
+- Sosyal medya bağlantıları
+- İletişim alanları
+- E-posta bağlantıları
+
+Logo, şirket adı, sosyal medya hesapları ve e-posta imzalarında aynı marka yapısının kullanılması hedeflenmeli.
+
+Logo dosyasının kendisini veya müşteri tarafından onaylanan marka varlıklarını izinsiz değiştirme.
+
+6. ARAMA MOTORU GÖRÜNÜRLÜĞÜ
+
+Site şu anda şirket adıyla yapılan aramalarda yeterince görünür değil.
+
+Aşağıdaki teknik SEO konularını kontrol et ve gerekli düzenlemeleri planla:
+
+- Site içeriğinin Google ve diğer arama motorları tarafından okunabilir olması
+- Her sayfa için doğru ve benzersiz title kullanılması
+- Her sayfa için uygun meta description hazırlanması
+- XML sitemap oluşturulması
+- robots.txt kontrolü
+- Canonical URL yapısının kontrol edilmesi
+- Google Search Console bağlantısı için gerekli altyapının hazırlanması
+- Mobil hız ve performans kontrolü
+- Görsellerin optimize edilmesi
+- Doğru H1 ve H2 hiyerarşisinin kullanılması
+- Sayfaların indexlenebilirliğinin kontrol edilmesi
+- Kırık bağlantıların kontrol edilmesi
+- Site URL ve route yapısının anlaşılır olması
+- Open Graph ve sosyal medya paylaşım bilgilerinin düzenlenmesi
+- Gerekli temel structured data / schema kullanımının değerlendirilmesi
+
+Search Console hesabına erişim yoksa bağlantının tamamlandığını iddia etme. Yalnızca doğrulama için gerekli kod veya alanı hazırla ve müşterinin yapması gereken işlemi belirt.
+
+7. METİNLERİN ARAMA MOTORLARI TARAFINDAN OKUNABİLMESİ
+
+Site metinleri yalnızca:
+
+- Animasyonların içinde
+- Görsellerin üzerinde
+- Canvas içerisinde
+- Arka plan görselinin parçası olarak
+
+kalmamalı.
+
+Site görsel olarak düzgün açılıyor olsa bile arama motorlarının metinleri okuyamaması ihtimali teknik olarak kontrol edilmeli.
+
+Ana içerikler gerçek HTML metni olarak sayfada bulunmalı.
+
+Özellikle aşağıdaki içerikler okunabilir HTML olmalı:
+
+- Şirket tanıtımı
+- About Us metinleri
+- Hizmet başlıkları ve açıklamaları
+- Vessel segmentleri
+- Cargoes
+- Trading areas
+- HSEQ & Compliance
+- İletişim bilgileri
+- Sayfa başlıkları
+
+Animasyonlar korunabilir ancak metnin erişilebilir ve indexlenebilir olması engellenmemeli.
+
+8. BAŞLIK HİYERARŞİSİ
+
+Her sayfada doğru başlık yapısı kullanılmalı.
+
+- Her sayfada tercihen tek bir ana H1 bulunmalı.
+- Alt bölüm başlıkları mantıklı H2 ve H3 yapısında olmalı.
+- Başlık etiketleri yalnızca görsel boyut vermek için kullanılmamalı.
+- Menü, footer ve dekoratif metinler gereksiz şekilde H1 veya H2 yapılmamalı.
+- Başlıklar sayfanın içeriğini açık şekilde anlatmalı.
+
+9. GÖRSEL OPTİMİZASYONU
+
+Mevcut görselleri kontrol et.
+
+Aşağıdaki optimizasyonları değerlendir:
+
+- Uygun görsel formatları
+- WebP veya AVIF kullanımı
+- Responsive image boyutları
+- Lazy loading
+- Gereksiz yüksek çözünürlüklerin azaltılması
+- Width ve height değerlerinin tanımlanması
+- Layout shift sorunlarının azaltılması
+- Açıklayıcı alt metinler
+- Arka plan ve dekoratif görsellerin doğru kullanılması
+
+Görsel kalitesi gereksiz şekilde düşürülmemeli.
+
+10. MOBİL HIZ VE PERFORMANS
+
+Siteyi mobil, tablet ve masaüstünde kontrol et.
+
+Aşağıdaki konuları değerlendir:
+
+- İlk açılış süresi
+- Büyük görseller
+- Gereksiz JavaScript
+- Kullanılmayan CSS
+- Font yükleme yöntemi
+- Animasyon performansı
+- Mobil menü
+- Form kullanımı
+- CTA butonları
+- Layout kaymaları
+- Dokunmatik alanların boyutları
+- Erişilebilirlik
+- Core Web Vitals açısından temel sorunlar
+
+Mevcut görsel deneyimi bozacak kontrolsüz optimizasyon yapma.
+
+11. SAYFA BAZINDA META YAPISI
+
+Aşağıdaki sayfalar için ayrı ve mantıklı SEO yapısı hazırla:
+
+- Home
+- About Us
+- Services
+- Vessel Segments & Cargoes
+- Trading Areas
+- HSEQ & Compliance
+- News / Market Insights
+- Careers
+- Contact
+- Privacy Policy
+- KVKK Information Notice
+- Cookie Policy
+- Terms of Use
+- Corporate Information
+
+Her sayfa için:
+
+- Meta title
+- Meta description
+- H1 önerisi
+- URL slug önerisi
+- Kısa sayfa amacı
+
+hazırla.
+
+Metinlerde şirketi olduğundan farklı gösteren veya gerçek olmayan iddialar kullanma.
+
+12. SON KALİTE KONTROLÜ
+
+Tüm değişiklikler tamamlandıktan sonra aşağıdaki kontrolleri yap:
+
+- Site mevcut tasarım karakterini koruyor mu?
+- Site artık yalnızca landing page seviyesinde kalmıyor mu?
+- Şirketin tam olarak ne yaptığı anlaşılabiliyor mu?
+- “Drybulk Pioneer” marka adı tutarlı kullanılıyor mu?
+- Sadece “Pioneer” kullanılan gereksiz alanlar azaltıldı mı?
+- Footer içerisinde tam şirket bilgileri için gerekli alanlar var mı?
+- Yasal sayfalar erişilebilir mi?
+- Çerez bildirimi çalışıyor mu?
+- HSEQ & Compliance bölümü kısa ve güven veren bir yapıda mı?
+- Ana metinler gerçek HTML olarak okunabiliyor mu?
+- Sayfa başlıkları ve açıklamaları düzenlendi mi?
+- XML sitemap mevcut mu?
+- robots.txt ve indexlenebilirlik kontrol edildi mi?
+- Görseller optimize edildi mi?
+- H1/H2 yapısı doğru mu?
+- Mobil hız ve responsive görünüm kontrol edildi mi?
+- Sahte şirket, hizmet, ekip, sertifika veya iletişim bilgisi eklenmedi mi?
+- Şirket yeni olmasına rağmen uzun geçmişi varmış gibi bir anlatım kullanılmadı mı?
+- Ziyaretçi şirket, hizmetler, gemiler, yükler, bölgeler, ekip ve iletişim hakkında kısa sürede bilgi bulabiliyor mu?
+
+Planın sonunda:
+
+- Değiştirilecek dosyaları
+- Eklenecek dosyaları
+- Oluşturulacak route ve sayfaları
+- Güncellenecek componentleri
+- Gerekli müşteri bilgilerini
+- Müşteriden onay alınması gereken içerikleri
+- Teknik test adımlarını
+
+tek tek listele.
+
+Plan onaylanmadan geniş kapsamlı ve geri döndürülmesi zor kod değişikliklerine başlama.
