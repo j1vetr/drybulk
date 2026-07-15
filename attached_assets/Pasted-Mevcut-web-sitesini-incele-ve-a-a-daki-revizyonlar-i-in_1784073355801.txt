@@ -1,0 +1,282 @@
+Mevcut web sitesini incele ve aşağıdaki revizyonlar için ayrıntılı bir uygulama planı oluştur.
+
+ÖNEMLİ GENEL KURALLAR
+
+- Mevcut tasarımı tamamen değiştirme.
+- Sitenin mevcut tasarım dili, renkleri, genel görsel yapısı ve marka karakteri korunmalı.
+- Amaç siteyi yeniden tasarlamak değil; mevcut siteyi daha dolu, güven veren, kurumsal ve denizcilik sektörüne özgü bir yapıya getirmektir.
+- Şirketi olduğundan büyük, farklı veya uzun yıllardır faaliyet gösteriyormuş gibi gösterme.
+- Şirket yeni kurulduğu için uzun şirket geçmişi varmış gibi metinler yazılmamalı.
+- Bunun yerine yönetim ekibinin ve ekibin denizcilik ile dry bulk sektöründeki tecrübesi öne çıkarılmalı.
+- Gerçekte sunulmayan hiçbir hizmet, faaliyet, gemi segmenti, yük grubu veya ticaret bölgesi eklenmemeli.
+- Aşağıdaki maddeler müşterinin doğrudan talepleridir. Hiçbir talebi atlama, anlamını değiştirme veya kendi yorumunla kaldırma.
+- Uygulamaya başlamadan önce mevcut sayfa, component, route, içerik ve responsive yapısını incele.
+- Yapılacak değişiklikleri sayfa ve component bazında planla.
+- Mümkün olan bölümlerde sayfa bazında İngilizce içerik taslakları da hazırla.
+
+1. SİTENİN GENEL YAPISI
+
+Mevcut haliyle site tanıtım veya landing page seviyesinde kalıyor.
+
+Siteyi ziyaret eden bir:
+
+- Armatör
+- Kiracı
+- Broker
+- Tedarikçi
+- Banka
+
+şirket hakkında daha fazla ve daha net bilgiye ulaşabilmeli.
+
+Ziyaretçi kısa süre içerisinde aşağıdaki soruların cevaplarını bulabilmeli:
+
+- Şirket kimdir?
+- Tam olarak ne iş yapmaktadır?
+- Hangi gemi tiplerinde çalışmaktadır?
+- Hangi yüklerde faaliyet göstermektedir?
+- Hangi bölgelerde faaliyet göstermektedir?
+- Hangi departman veya kişiyle iletişim kurulmalıdır?
+- Şirketin arkasındaki ekip kimdir?
+- Kurumsal ve güvenilir bir yapı var mıdır?
+
+2. MENÜ VE SAYFA YAPISI
+
+Aşağıdaki menü yapısını değerlendir ve mevcut siteye uygun şekilde oluştur:
+
+- Home
+- About Us
+- Services
+- Vessel Segments & Cargoes
+- Trading Areas
+- HSEQ & Compliance
+- News / Market Insights
+- Careers
+- Contact
+
+Bu başlıkların ayrı sayfa mı yoksa mevcut yapıya uygun ayrı sectionlar mı olması gerektiğini mevcut kod yapısını inceleyerek planla.
+
+Ancak ziyaretçinin her başlığa menü üzerinden açık şekilde ulaşabilmesi gerekir.
+
+News / Market Insights ve Careers alanlarında onaylanmış gerçek içerik bulunmuyorsa sahte haber, iş ilanı veya şirket bilgisi üretme. Bu alanların altyapısını oluştur fakat yalnızca gerçek içerik kullan.
+
+3. ANA SAYFA ŞİRKET TANITIMI
+
+Şirketin faaliyet alanı daha açık anlatılmalı.
+
+Mevcut “Dry Bulk Shipping & Chartering” ifadesi doğru olmakla birlikte fazla genel kalıyor.
+
+Şirketin aşağıdaki alanlarda faaliyet gösterdiği daha net anlatılmalı:
+
+- Dry bulk chartering
+- Commercial operation
+- Voyage estimation and freight evaluation
+- Operations and post-fixture follow-up
+- Commercial management
+
+Şirketi olduğundan farklı veya büyük göstermeden, tam olarak yaptığı işi açıklayan kısa ve net bir tanım hazırlanmalı.
+
+Ana sayfada aşağıdakine benzer bir ifade kullanılabilir:
+
+“Drybulk Pioneer is an Istanbul-based dry bulk shipping and chartering company providing commercial operation, chartering and post-fixture support across international trades.”
+
+Bu ifade sayfanın tasarımına uygun bir alanda, ziyaretçinin ve arama motorlarının doğrudan okuyabileceği gerçek HTML metni olarak yer almalı.
+
+4. ABOUT US BÖLÜMÜ
+
+About Us bölümü geliştirilmeli.
+
+Bu bölümde aşağıdaki temel bilgiler bulunmalı:
+
+- Şirketin İstanbul merkezli olduğu
+- Şirketin kuruluş yılı
+- Şirketin temel faaliyet alanları
+- Yönetim ekibinin denizcilik ve dry bulk tecrübesi
+- Çalışılan başlıca bölgeler
+- Çalışılan gemi segmentleri
+
+Şirket yeni kurulduğu için uzun bir şirket geçmişi varmış gibi anlatım yapılmamalı.
+
+Kurumsal geçmiş yerine yönetim ekibinin ve ekibin sektördeki deneyimi ön plana çıkarılmalı.
+
+About Us bölümü çok uzun veya abartılı olmamalı. Net, gerçekçi ve güven veren bir içerik hazırlanmalı.
+
+5. SERVICES SAYFASI VEYA BÖLÜMÜ
+
+Hizmetler tek bir genel açıklama altında bırakılmamalı.
+
+Hizmetler ayrı başlıklar altında daha detaylı ve anlaşılır şekilde gösterilmeli.
+
+Aşağıdaki hizmet yapısını değerlendir:
+
+A. Dry Bulk Chartering
+
+- Voyage charter
+- Time charter
+- Cargo and vessel matching
+- Freight negotiation
+- Market evaluation
+
+B. Commercial Operations
+
+- Voyage estimation
+- TCE and profitability analysis
+- Bunker planning
+- Trade and employment evaluation
+- Charter-party follow-up
+- Post-Fixture and Operations
+- Voyage instructions
+- Port and agency coordination
+- Freight and hire follow-up
+- Laytime and demurrage
+- Operational reporting
+
+Bu hizmetlerden yalnızca şirketin gerçekten sunduğu hizmetler kullanılmalı.
+
+Listeyi doğrudan kontrolsüz şekilde yayınlama. İçerik yapısını bu başlıklara göre hazırla ancak gerçek hizmetlerin müşteri tarafından onaylanabileceği şekilde düzenlenebilir bir yapı oluştur.
+
+Her ana hizmet için:
+
+- Kısa açıklama
+- Alt hizmetler
+- Uygun CTA
+- İlgili iletişim departmanı
+
+bulunabilir.
+
+6. VESSEL SEGMENTS
+
+Şirketin hangi gemi segmentlerinde çalıştığını gösteren ayrı bir bölüm veya sayfa oluştur.
+
+Değerlendirilecek gemi segmentleri:
+
+- Handysize
+- Handymax
+- Supramax
+- Ultramax
+- Panamax / Kamsarmax
+
+Şirket doğrudan sahip olduğu veya yönettiği bir filo sunmuyorsa “Our Fleet” ifadesi kullanılmamalı.
+
+Bunun yerine aşağıdaki gibi ifadeler tercih edilmeli:
+
+- Vessel Segments We Operate In
+- Vessel Segments
+- Market Coverage
+
+Şirketin doğrudan sahip olmadığı gemiler, şirket filosuymuş gibi gösterilmemeli.
+
+7. CARGOES
+
+Çalışılan yükleri gösteren ayrı ve anlaşılır bir alan oluştur.
+
+Değerlendirilecek yük grupları:
+
+- Grain and agricultural products
+- Fertiliser and urea
+- Sulphur
+- Coal and petcoke
+- Minerals
+- Cement and clinker
+- Steel products
+- Sugar
+- Bagged and bulk commodities
+
+Yalnızca şirketin gerçekten çalıştığı yük grupları yayınlanmalı.
+
+Bu içerikler tasarım içerisinde kart, liste veya uygun bir görsel sistemle sunulabilir ancak metinler gerçek HTML olarak okunabilir olmalı.
+
+8. TRADING AREAS
+
+Şirketin faaliyet gösterdiği ticaret bölgelerini gösteren ayrı bir bölüm veya sayfa oluştur.
+
+Değerlendirilecek bölgeler:
+
+- Mediterranean
+- Black Sea
+- Arabian Gulf
+- Red Sea
+- Indian Subcontinent
+- East and South Africa
+- Southeast Asia
+- Far East
+- South America
+
+Yalnızca şirketin gerçekten faaliyet gösterdiği bölgeler yayınlanmalı.
+
+Bu alanda da şirketi olduğundan daha geniş bir organizasyon gibi gösterecek ifadeler kullanılmamalı.
+
+9. ANA SAYFA YÖNLENDİRMELERİ VE CTA BUTONLARI
+
+Ana sayfadaki yönlendirmeler daha net hale getirilmeli.
+
+Aşağıdaki CTA seçeneklerini değerlendir:
+
+- Contact Chartering
+- Submit a Cargo Enquiry
+- Offer a Vessel
+- Contact Operations
+
+Bu butonların her biri doğru forma, doğru iletişim kanalına veya doğru bölüme yönlenmeli.
+
+CTA butonları yalnızca görsel amaçlı olmamalı, aktif ve işlevsel olmalı.
+
+10. İLETİŞİM FORMU VE DEPARTMANLAR
+
+Genel iletişim formunun yanında chartering ve operations için ayrı iletişim seçenekleri bulunmalı.
+
+Aşağıdaki departman e-posta adreslerinin kullanılabileceği bir yapı hazırlanmalı:
+
+- info@
+- chartering@
+- operations@
+- accounts@
+- claims@
+
+Tam e-posta adresleri gerçek domain bilgisine göre yapılandırılmalı.
+
+E-posta adreslerini tahmin ederek yayınlama. Domain ve aktif adresler mevcut projeden veya müşteri tarafından verilen bilgilerden alınmalı.
+
+Formlarda ihtiyaç halinde aşağıdaki yönlendirmeler bulunabilir:
+
+- General Enquiry
+- Chartering Enquiry
+- Cargo Enquiry
+- Vessel Offer
+- Operations Enquiry
+- Accounts
+- Claims
+
+Formların alıcı adresleri departmanlara göre ayrılmalı.
+
+11. YÖNETİM VEYA EKİP BİLGİSİ
+
+Şirketin arkasındaki ekibi gösterecek kısa ve sade bir yönetim veya ekip alanı oluştur.
+
+Her kişi için aşağıdaki bilgiler yeterlidir:
+
+- İsim
+- Pozisyon
+- Kısa deneyim bilgisi
+
+Çok detaylı CV veya uzun biyografi kullanılmamalı.
+
+İçerikler gerçek kişi ve gerçek deneyim bilgileriyle hazırlanmalı. Eksik bilgiler için sahte isim, unvan veya tecrübe üretme.
+
+12. BİRİNCİ AŞAMA SONUÇ KONTROLÜ
+
+Bu aşamanın sonunda aşağıdaki kontrolleri yap:
+
+- Ana sayfada şirketin ne yaptığı açık mı?
+- Hizmetler ayrı ve anlaşılır başlıklara ayrılmış mı?
+- About Us bölümü şirketi abartmadan doğru anlatıyor mu?
+- Gemi segmentleri şirket filosu gibi gösterilmeden anlatılıyor mu?
+- Yük grupları anlaşılır mı?
+- Ticaret bölgeleri anlaşılır mı?
+- Chartering ve operations iletişimleri ayrılmış mı?
+- CTA butonları işlevsel mi?
+- Ekip bilgileri için uygun alan oluşturulmuş mu?
+- Menü yapısındaki bütün başlıklar erişilebilir mi?
+- Mobil, tablet ve masaüstü görünüm korunmuş mu?
+- Mevcut tasarım tamamen değiştirilmeden içerik yapısı geliştirilmiş mi?
+
+Planı hazırlarken değiştirilecek dosyaları, oluşturulacak sayfaları, componentleri, route yapısını ve içerik alanlarını tek tek belirt.
