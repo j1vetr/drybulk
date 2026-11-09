@@ -302,7 +302,7 @@ function VesselModal({ vessel, onClose }: { vessel: Vessel; onClose: () => void 
 
 function VesselCard({ vessel, i, onOpen }: { vessel: Vessel; i: number; onOpen: () => void }) {
   const reduce = useReducedMotion();
-  const facts = summary(vessel);
+  const facts = summary(vessel).filter(([k]) => k !== 'Type' && k !== 'IMO');
   return (
     <motion.button
       type="button" onClick={onOpen}
@@ -310,32 +310,42 @@ function VesselCard({ vessel, i, onOpen }: { vessel: Vessel; i: number; onOpen: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="group text-left bg-white border border-gray-200 hover:border-accent hover:shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      className="group text-left bg-primary shadow-xl shadow-primary/15 flex flex-col focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
       aria-label={`View ${vessel.name} details`}
       data-testid={`card-vessel-${vessel.id}`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[16/11] overflow-hidden">
         <img src={asset(vessel.photos[0].src)} alt={vessel.photos[0].alt} width={vessel.photos[0].width} height={vessel.photos[0].height}
           loading="lazy" decoding="async"
-          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out motion-safe:group-hover:scale-[1.04]" />
-        <span className="absolute top-3 right-3 bg-[#06182b]/75 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-2">
+          className="w-full h-full object-cover transition-transform duration-[1400ms] ease-out motion-safe:group-hover:scale-[1.05]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
+        <div className="absolute top-4 left-4 flex gap-2">
+          {vessel.type && <span className="bg-accent text-white text-[10px] font-bold uppercase tracking-[0.18em] px-3 py-1.5">{vessel.type}</span>}
+          {vessel.imo && <span className="bg-white/90 text-primary text-[10px] font-bold uppercase tracking-[0.18em] px-3 py-1.5">IMO {vessel.imo}</span>}
+        </div>
+        <span className="absolute top-4 right-4 bg-primary/70 text-white text-[10px] font-bold uppercase tracking-[0.18em] px-3 py-1.5">
           {vessel.photos.length} Photos
         </span>
+        <h3 className="absolute bottom-4 left-5 right-5 text-white font-bold text-3xl sm:text-4xl tracking-tight leading-none" data-testid={`text-vessel-name-${vessel.id}`}>
+          {vessel.name}
+        </h3>
       </div>
-      <div className="p-5 sm:p-7">
-        <h3 className="text-primary font-bold text-2xl sm:text-3xl tracking-tight" data-testid={`text-vessel-name-${vessel.id}`}>{vessel.name}</h3>
-        {facts.length > 0 && (
-          <dl className="mt-5 grid grid-cols-3 gap-px bg-gray-200 border border-gray-200">
+      <div className="p-5 sm:p-6 flex-1 flex flex-col">
+        {facts.length > 0 ? (
+          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/15">
             {facts.map(([k, v]) => (
-              <div key={k} className="bg-gray-50 px-3 py-3">
-                <dt className="text-accent text-[10px] font-bold uppercase tracking-[0.18em]">{k}</dt>
-                <dd className="text-primary text-sm font-medium mt-1">{v}</dd>
+              <div key={k} className="bg-primary py-3 pr-3 sm:px-3 first:sm:pl-0">
+                <dt className="text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{k}</dt>
+                <dd className="text-white text-lg font-bold mt-1">{v}</dd>
               </div>
             ))}
           </dl>
+        ) : (
+          <p className="text-white/60 text-sm">Photographs available. Technical specifications to follow.</p>
         )}
-        <span className="mt-5 inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-3 transition-all">
-          View Details <ChevronRight className="w-4 h-4" aria-hidden="true" />
+        <span className="mt-auto pt-5 inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-3 transition-all">
+          <span className="border-b border-accent pb-0.5">View Specifications</span>
+          <ChevronRight className="w-4 h-4 text-accent" aria-hidden="true" />
         </span>
       </div>
     </motion.button>
@@ -350,11 +360,17 @@ export function Vessels() {
     <section id="vessels" className="bg-white py-16 md:py-24 scroll-mt-16" aria-labelledby="vessels-heading">
       <style>{`@keyframes vfade{from{opacity:0}to{opacity:1}}`}</style>
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-10 md:mb-14">
-          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">On the Water</p>
-          <h2 id="vessels-heading" className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1]">
-            Our Fleet
-          </h2>
+        <div className="mb-10 md:mb-14 grid md:grid-cols-[1fr_auto] gap-6 md:items-end">
+          <div>
+            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">On the Water</p>
+            <div className="w-10 h-[3px] bg-accent mb-5" />
+            <h2 id="vessels-heading" className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1]">
+              Our Fleet
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-sm md:text-base max-w-md leading-relaxed md:text-right">
+            Select a vessel to see its photographs and full technical specifications.
+          </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {VESSELS.map((v, i) => <VesselCard key={v.id} vessel={v} i={i} onOpen={() => setOpenId(v.id)} />)}
