@@ -59,6 +59,14 @@ export function Compliance() {
               standards of ethical business conduct, regulatory compliance and environmental
               awareness across all of our activities.
             </p>
+            <div className="mt-8 grid gap-4">
+              {[
+                { src: '/images/vessels/rhosus-cy-1.webp', alt: 'RHOSUS CY at sea' },
+                { src: '/images/vessels/sea-diamond-i-1.webp', alt: 'SEA DIAMOND I at sea' },
+              ].map((p) => (
+                <img key={p.src} src={p.src} alt={p.alt} loading="lazy" className="w-full aspect-[16/10] object-cover" />
+              ))}
+            </div>
           </motion.div>
 
           {/* Right: grid */}

@@ -1,164 +1,171 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 
 const DEPARTMENTS = [
-  { label: 'General Inquiries', email: 'info@dbpioneer.com' },
-  { label: 'Chartering',        email: 'chartering@dbpioneer.com' },
-  { label: 'Operations',        email: 'operations@dbpioneer.com' },
-  { label: 'Accounts',          email: 'accounts@dbpioneer.com' },
-  { label: 'Claims',            email: 'claims@dbpioneer.com' },
+  { label: 'General Inquiries',  email: 'info@dbpioneer.com',        prefix: 'info@' },
+  { label: 'Chartering',         email: 'chartering@dbpioneer.com',  prefix: 'chartering@' },
+  { label: 'Operations',         email: 'operations@dbpioneer.com',  prefix: 'operations@' },
+  { label: 'Accounts',           email: 'accounts@dbpioneer.com',    prefix: 'accounts@' },
+  { label: 'Claims',             email: 'claims@dbpioneer.com',      prefix: 'claims@' },
 ];
 
-const INQUIRY_TYPES = [
-  { value: 'cargo',      label: 'Cargo Enquiry',  to: 'chartering@dbpioneer.com' },
-  { value: 'vessel',     label: 'Offer a Vessel', to: 'chartering@dbpioneer.com' },
-  { value: 'chartering', label: 'Chartering',     to: 'chartering@dbpioneer.com' },
-  { value: 'operations', label: 'Operations',     to: 'operations@dbpioneer.com' },
-  { value: 'general',    label: 'General',        to: 'info@dbpioneer.com' },
+const CTA_LINKS = [
+  { label: 'Submit a Cargo Enquiry', value: 'cargo' },
+  { label: 'Offer a Vessel',         value: 'vessel' },
+  { label: 'Contact Chartering',     value: 'chartering' },
+  { label: 'Contact Operations',     value: 'operations' },
 ];
 
-const FIELD =
-  'w-full bg-transparent border-0 border-b border-white/25 py-2 text-sm text-white placeholder:text-white/35 focus:outline-none focus:border-white transition-colors rounded-none';
-const LABEL = 'block text-[10px] font-bold uppercase tracking-[0.18em] text-white/60 mb-1';
+const INPUT = 'w-full border-b border-gray-300 py-1.5 text-sm focus:outline-none focus:border-primary transition-colors bg-transparent';
+const LABEL = 'text-[10px] font-bold uppercase tracking-wider text-muted-foreground';
 
 export function Contact() {
-  const [type, setType] = useState(INQUIRY_TYPES[0].value);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const get = (k: string) => String(data.get(k) ?? '').trim();
-    const target = INQUIRY_TYPES.find((t) => t.value === type) ?? INQUIRY_TYPES[0];
-    const lines = [
-      `Company: ${get('company')}`,
-      `Contact Person: ${get('person')}`,
-      `Email: ${get('email')}`,
-      `Phone: ${get('phone')}`,
-      '',
-      `Commodity: ${get('commodity')}`,
-      `Quantity (MT): ${get('quantity')}`,
-      `Laycan: ${get('laycan')}`,
-      `Load Port(s): ${get('load')}`,
-      `Discharge Port(s): ${get('discharge')}`,
-      '',
-      get('notes'),
-    ];
-    const subject = `${target.label} from ${get('company') || get('person') || 'website'}`;
-    window.location.href = `mailto:${target.to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-  };
-
   return (
-    <section id="contact" className="py-16 md:py-24 bg-primary text-white scroll-mt-16">
+    <section id="contact" className="py-16 md:py-20 bg-primary text-white relative">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-24">
 
+        {/* CTA quick-links */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap gap-3 mb-12"
+        >
+          {CTA_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={`mailto:${link.value === 'cargo' || link.value === 'vessel' ? 'chartering@dbpioneer.com' : `${link.value}@dbpioneer.com`}`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary text-xs font-semibold uppercase tracking-wider hover:bg-accent hover:text-white transition-colors group"
+            >
+              {link.label}
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+          ))}
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+          {/* Left: Contact Info */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">Contact</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-10">
+            <h2 className="text-accent text-sm font-bold tracking-[0.2em] uppercase mb-3">Contact &amp; Inquiries</h2>
+            <h3 className="text-3xl md:text-4xl font-bold leading-tight mb-8">
               Ready to move your cargo?
-            </h2>
+            </h3>
 
-            <div className="space-y-6 mb-10">
+            <div className="space-y-5 mb-8">
               <div className="flex gap-4">
-                <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
-                <p className="text-white/75 text-sm leading-relaxed">
-                  Drybulk Pioneer Denizcilik ve Ticaret Ltd. Şti.<br />
-                  Kosuyolu Mah. Cenap Şahabettin Sokak No:90<br />
-                  34718 Kadıköy / İstanbul, Türkiye
-                </p>
+                <div className="w-10 h-10 flex items-center justify-center border border-white/25 shrink-0">
+                  <MapPin className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h5 className="font-bold mb-1 text-sm">Office</h5>
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    Drybulk Pioneer Denizcilik ve Ticaret Ltd. Şti.<br />
+                    Kosuyolu Mah. Cenap Şahabettin Sokak No:90<br />
+                    34718 Kadıköy / İstanbul, Türkiye
+                  </p>
+                </div>
               </div>
-              <div className="flex gap-4 items-center">
-                <Phone className="w-5 h-5 text-accent shrink-0" aria-hidden="true" />
-                <a href="tel:+902165450945" className="text-white/75 hover:text-white text-sm transition-colors">
-                  +90 216 545 09 45
-                </a>
+
+              <div className="flex gap-4">
+                <div className="w-10 h-10 flex items-center justify-center border border-white/25 shrink-0">
+                  <Phone className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h5 className="font-bold mb-1 text-sm">Telephone</h5>
+                  <p className="text-white/70 text-sm">
+                    <a href="tel:+902165450945" className="hover:text-white transition-colors">
+                      +90 216 545 09 45
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-10 h-10 flex items-center justify-center border border-white/25 shrink-0">
+                  <Mail className="w-4 h-4 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h5 className="font-bold mb-3 text-sm">Department Contacts</h5>
+                  <div className="space-y-2">
+                    {DEPARTMENTS.map((d) => (
+                      <div key={d.email} className="flex items-center justify-between border-b border-white/15 pb-2">
+                        <span className="text-xs text-white/60">{d.label}</span>
+                        <a href={`mailto:${d.email}`} className="text-xs font-medium text-white hover:text-accent transition-colors">
+                          {d.email}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-
-            <ul className="border-t border-white/15">
-              {DEPARTMENTS.map((d) => (
-                <li key={d.email}>
-                  <a
-                    href={`mailto:${d.email}`}
-                    className="flex items-center justify-between gap-4 py-3.5 border-b border-white/15 group"
-                  >
-                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-white/60">{d.label}</span>
-                    <span className="flex items-center gap-2 text-sm text-white group-hover:text-accent transition-colors">
-                      {d.email}
-                      <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
           </motion.div>
 
+          {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white text-foreground p-6 md:p-8 shadow-sm"
           >
-            <h3 className="text-xl font-bold mb-6">Send an Inquiry</h3>
-            <form className="space-y-6" onSubmit={onSubmit} data-testid="form-inquiry">
-              <fieldset>
-                <legend className={LABEL}>Inquiry Type</legend>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {INQUIRY_TYPES.map((t) => (
-                    <button
-                      key={t.value}
-                      type="button"
-                      onClick={() => setType(t.value)}
-                      aria-pressed={type === t.value}
-                      className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider border transition-colors ${
-                        type === t.value
-                          ? 'bg-white text-primary border-white'
-                          : 'border-white/30 text-white/80 hover:border-white'
-                      }`}
-                    >
-                      {t.label}
-                    </button>
-                  ))}
+            <h4 className="text-xl font-bold text-primary mb-5">Send an Inquiry</h4>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-1">
+                <label className={LABEL}>Inquiry Type</label>
+                <select className={`${INPUT} text-foreground`}>
+                  <option value="">Select inquiry type...</option>
+                  <option value="cargo">Submit a Cargo Enquiry</option>
+                  <option value="vessel">Offer a Vessel</option>
+                  <option value="chartering">Chartering</option>
+                  <option value="operations">Operations</option>
+                  <option value="general">General Inquiry</option>
+                </select>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-1"><label className={LABEL}>Company Name</label><input type="text" className={INPUT} placeholder="Enter company name" /></div>
+                <div className="space-y-1"><label className={LABEL}>Contact Person</label><input type="text" className={INPUT} placeholder="Full name" /></div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-1"><label className={LABEL}>Email Address</label><input type="email" className={INPUT} placeholder="name@company.com" /></div>
+                <div className="space-y-1"><label className={LABEL}>Phone Number</label><input type="tel" className={INPUT} placeholder="+90 5XX XXX XX XX" /></div>
+              </div>
+
+              <div className="space-y-1">
+                <label className={LABEL}>Cargo Details</label>
+                <div className="grid grid-cols-3 gap-3">
+                  <input type="text" className={INPUT} placeholder="Commodity" />
+                  <input type="text" className={INPUT} placeholder="Quantity (MT)" />
+                  <input type="text" className={INPUT} placeholder="Laycan" />
                 </div>
-              </fieldset>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div><label className={LABEL} htmlFor="c-company">Company</label><input id="c-company" name="company" className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-person">Contact Person</label><input id="c-person" name="person" required className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-email">Email</label><input id="c-email" name="email" type="email" required className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" className={FIELD} /></div>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div><label className={LABEL} htmlFor="c-commodity">Commodity</label><input id="c-commodity" name="commodity" className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-quantity">Quantity (MT)</label><input id="c-quantity" name="quantity" className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-laycan">Laycan</label><input id="c-laycan" name="laycan" className={FIELD} /></div>
+              <div className="space-y-1">
+                <label className={LABEL}>Routing</label>
+                <div className="grid grid-cols-2 gap-3">
+                  <input type="text" className={INPUT} placeholder="Load Port(s)" />
+                  <input type="text" className={INPUT} placeholder="Discharge Port(s)" />
+                </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div><label className={LABEL} htmlFor="c-load">Load Port(s)</label><input id="c-load" name="load" className={FIELD} /></div>
-                <div><label className={LABEL} htmlFor="c-discharge">Discharge Port(s)</label><input id="c-discharge" name="discharge" className={FIELD} /></div>
+              <div className="space-y-1">
+                <label className={LABEL}>Additional Notes</label>
+                <textarea className={`${INPUT} resize-none h-16`} placeholder="Vessel requirements, terms, or any other details..." />
               </div>
 
-              <div>
-                <label className={LABEL} htmlFor="c-notes">Notes</label>
-                <textarea id="c-notes" name="notes" rows={3} className={`${FIELD} resize-none`} />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-white text-primary py-3.5 text-sm font-bold uppercase tracking-widest hover:bg-accent hover:text-white transition-colors"
-                data-testid="button-submit-inquiry"
-              >
-                Send Inquiry
+              <button type="submit" className="w-full bg-primary text-white py-3 text-sm mt-2 font-bold uppercase tracking-widest hover:bg-primary/90 transition-colors">
+                Submit Inquiry
               </button>
-              <p className="text-white/45 text-xs">Sending opens your email app with the details filled in.</p>
             </form>
           </motion.div>
 
