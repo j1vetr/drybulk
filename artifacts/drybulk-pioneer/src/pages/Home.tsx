@@ -2,9 +2,8 @@ import React from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { About } from '@/components/About';
-import { Team } from '@/components/Team';
 import { Services } from '@/components/Services';
-import { Fleet } from '@/components/Fleet';
+import { Vessels } from '@/components/Vessels';
 import { Trust } from '@/components/Trust';
 import { Compliance } from '@/components/Compliance';
 import { Contact } from '@/components/Contact';
@@ -19,8 +18,7 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
-        <Fleet />
-        <Team />
+        <Vessels />
         <Trust />
         <Compliance />
         <Contact />
