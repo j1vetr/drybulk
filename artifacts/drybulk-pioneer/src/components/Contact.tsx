@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const DEPARTMENTS = [
   { label: 'General Inquiries',  email: 'info@dbpioneer.com',        prefix: 'info@' },
@@ -24,26 +24,6 @@ export function Contact() {
   return (
     <section id="contact" className="py-16 md:py-20 bg-primary text-white relative">
       <div className="container mx-auto px-6 md:px-12">
-
-        {/* CTA quick-links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap gap-3 mb-12"
-        >
-          {CTA_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={`mailto:${link.value === 'cargo' || link.value === 'vessel' ? 'chartering@dbpioneer.com' : `${link.value}@dbpioneer.com`}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary text-xs font-semibold uppercase tracking-wider hover:bg-accent hover:text-white transition-colors group"
-            >
-              {link.label}
-              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-            </a>
-          ))}
-        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
 
@@ -106,6 +86,18 @@ export function Contact() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-6">
+              {CTA_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={`mailto:${link.value === 'cargo' || link.value === 'vessel' ? 'chartering@dbpioneer.com' : `${link.value}@dbpioneer.com`}`}
+                  className="flex items-center justify-center text-center min-h-[52px] px-2 py-2 bg-white text-primary text-[10px] font-bold uppercase tracking-wider leading-tight hover:bg-accent hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </motion.div>
 
