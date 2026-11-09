@@ -2,14 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TradingAreasMap } from '@/components/TradingAreasMap';
 
-const VESSEL_SEGMENTS = [
-  { name: 'Handysize',           dwt: '~25,000-40,000 DWT' },
-  { name: 'Handymax',            dwt: '~40,000-55,000 DWT' },
-  { name: 'Supramax',            dwt: '~55,000-65,000 DWT' },
-  { name: 'Ultramax',            dwt: '~60,000-65,000 DWT' },
-  { name: 'Panamax / Kamsarmax', dwt: '~65,000-82,000 DWT' },
-];
-
 const CARGOES = [
   'Grain And Agricultural Products',
   'Fertiliser And Urea',
@@ -66,7 +58,7 @@ export function Fleet() {
   }, []);
 
   return (
-    <section id="segments" className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: PAPER }}>
+    <section id="cargoes" className="relative py-20 md:py-28 overflow-hidden" style={{ backgroundColor: PAPER }}>
       {/* Background video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {allowMotion ? (
@@ -110,37 +102,15 @@ export function Fleet() {
             Market Presence
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-tight mb-4">
-            Vessel Segments &amp; Market Coverage
+            Cargoes &amp; Market Coverage
           </h2>
           <p className="leading-relaxed text-base" style={{ color: `${INK}cc` }}>
-            Drybulk Pioneer operates across a wide range of dry bulk vessel segments, commodity
+            Drybulk Pioneer operates across a wide range of dry bulk commodity
             types and international trading areas.
           </p>
         </motion.div>
 
-        {/* Top row: Vessel Segments + Cargoes */}
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 mb-14 md:mb-20">
-          {/* Vessel Segments */}
-          <Column title="Vessel Segments We Operate In" eyebrow="Ship Types" delay={0}>
-            <ul className="space-y-0">
-              {VESSEL_SEGMENTS.map((v) => (
-                <li
-                  key={v.name}
-                  className="flex items-center justify-between gap-4 border-b py-3"
-                  style={{ borderColor: `${INK}22` }}
-                >
-                  <span className="text-white text-sm font-semibold">{v.name}</span>
-                  <span
-                    className="text-xs font-mono shrink-0"
-                    style={{ color: `${INK}88` }}
-                  >
-                    {v.dwt}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Column>
-
+        <div className="max-w-2xl mb-14 md:mb-20">
           {/* Cargoes */}
           <Column title="Cargoes" eyebrow="Commodities" delay={0.12}>
             <ul className="space-y-0">
