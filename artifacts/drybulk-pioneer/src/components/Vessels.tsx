@@ -83,7 +83,7 @@ function Specs({ vessel }: { vessel: Vessel }) {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/15 border border-white/15 mb-8">
           {vessel.highlights.map((h) => (
             <div key={h.label} className="bg-[#0d2c4b] px-4 py-5">
-              <p className="text-white font-serif text-2xl xl:text-3xl leading-none">{h.value}</p>
+              <p className="text-white font-bold text-2xl xl:text-3xl leading-none">{h.value}</p>
               <p className="mt-2 text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{h.label}</p>
             </div>
           ))}
@@ -270,7 +270,7 @@ function VesselEntry({ vessel }: { vessel: Vessel }) {
       >
         <h3
           id={`vessel-${vessel.id}`}
-          className="text-white font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none"
+          className="text-white font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none"
           data-testid={`text-vessel-name-${vessel.id}`}
         >
           {vessel.name}

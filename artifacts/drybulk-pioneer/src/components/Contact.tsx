@@ -53,7 +53,7 @@ export function Contact() {
           >
             <h2 className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3">Contact &amp; Inquiries</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-primary leading-tight mb-8">
-              Ready to move your <span className="font-serif italic font-normal text-accent">cargo?</span>
+              Ready to move your <span className="text-accent">cargo?</span>
             </h3>
 
             <div className="space-y-5 mb-8">

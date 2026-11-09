@@ -43,7 +43,7 @@ export function Trust() {
             <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">Why Choose Us</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               Built on expertise and{' '}
-              <span className="font-serif italic font-normal text-white/80">market knowledge.</span>
+              <span className="text-white/80">market knowledge.</span>
             </h2>
             <p className="text-base text-white/70 leading-relaxed max-w-lg">
               Drybulk Pioneer was established by maritime professionals who understand the dry bulk
