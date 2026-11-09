@@ -44,7 +44,7 @@ export function About() {
   return (
     <section id="about" className="relative py-20 md:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-14 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-14 lg:gap-16 lg:items-stretch">
 
           {/* Left column: copy + photo */}
           <motion.div
@@ -79,11 +79,11 @@ export function About() {
               client-focused execution on every fixture.
             </p>
 
-            <div className="mt-auto rounded-2xl overflow-hidden shadow-lg">
+            <div className="mt-auto rounded-2xl overflow-hidden shadow-lg h-56 lg:h-60">
               <img
                 src="/images/about-ship.webp"
                 alt="Drybulk Pioneer bulk carrier at sea"
-                className="w-full h-full max-h-72 object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.div>
@@ -119,7 +119,7 @@ export function About() {
             })}
             </div>
 
-            <div className="mt-auto overflow-hidden rounded-2xl h-48 lg:h-60" aria-label="Photographs of our vessels">
+            <div className="mt-auto overflow-hidden rounded-2xl h-56 lg:h-60" aria-label="Photographs of our vessels">
               <style>{`@keyframes abt-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .abt-track{animation:abt-marquee 40s linear infinite}
 .abt-marquee:hover .abt-track{animation-play-state:paused}
