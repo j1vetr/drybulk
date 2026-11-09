@@ -39,14 +39,14 @@ export function Compliance() {
   return (
     <section id="compliance" className="py-20 md:py-28 bg-slate-50">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-20 lg:items-stretch">
           {/* Left: heading */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:sticky lg:top-28"
+            className="flex flex-col"
           >
             <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">
               HSEQ &amp; Compliance
@@ -59,14 +59,12 @@ export function Compliance() {
               standards of ethical business conduct, regulatory compliance and environmental
               awareness across all of our activities.
             </p>
-            <div className="mt-8 grid gap-4">
-              {[
-                { src: '/images/vessels/rhosus-cy-1.webp', alt: 'RHOSUS CY at sea' },
-                { src: '/images/vessels/sea-diamond-i-1.webp', alt: 'SEA DIAMOND I at sea' },
-              ].map((p) => (
-                <img key={p.src} src={p.src} alt={p.alt} loading="lazy" className="w-full aspect-[16/10] object-cover" />
-              ))}
-            </div>
+            <img
+              src="/images/vessels/rhosus-cy-1.webp"
+              alt="RHOSUS CY at sea"
+              loading="lazy"
+              className="mt-8 w-full flex-1 min-h-[14rem] object-cover"
+            />
           </motion.div>
 
           {/* Right: grid */}
