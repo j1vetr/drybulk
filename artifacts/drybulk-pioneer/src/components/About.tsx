@@ -44,7 +44,7 @@ export function About() {
   return (
     <section id="about" className="relative py-20 md:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-14 lg:gap-16 lg:items-stretch">
+        <div className="grid lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] gap-14 lg:gap-16 lg:items-stretch">
 
           {/* Left column: copy + photo */}
           <motion.div
@@ -94,7 +94,7 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col gap-4 lg:pt-4"
+            className="flex flex-col gap-4 lg:pt-4 min-w-0"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {COMPETENCIES.map((item, index) => {
@@ -119,7 +119,7 @@ export function About() {
             })}
             </div>
 
-            <div className="mt-auto overflow-hidden rounded-2xl h-56 lg:h-60" aria-label="Photographs of our vessels">
+            <div className="mt-auto overflow-hidden rounded-2xl h-56 lg:h-60 w-full min-w-0" aria-label="Photographs of our vessels">
               <style>{`@keyframes abt-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .abt-track{animation:abt-marquee 40s linear infinite}
 .abt-marquee:hover .abt-track{animation-play-state:paused}
