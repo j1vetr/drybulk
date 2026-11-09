@@ -310,7 +310,7 @@ function VesselCard({ vessel, i, onOpen }: { vessel: Vessel; i: number; onOpen: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-      className="group text-left bg-[#0d2c4b] border border-white/10 hover:border-[#8FB8DE]/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8FB8DE]"
+      className="group text-left bg-white border border-gray-200 hover:border-accent hover:shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
       aria-label={`View ${vessel.name} details`}
       data-testid={`card-vessel-${vessel.id}`}
     >
@@ -323,18 +323,18 @@ function VesselCard({ vessel, i, onOpen }: { vessel: Vessel; i: number; onOpen: 
         </span>
       </div>
       <div className="p-5 sm:p-7">
-        <h3 className="text-white font-bold text-2xl sm:text-3xl tracking-tight" data-testid={`text-vessel-name-${vessel.id}`}>{vessel.name}</h3>
+        <h3 className="text-primary font-bold text-2xl sm:text-3xl tracking-tight" data-testid={`text-vessel-name-${vessel.id}`}>{vessel.name}</h3>
         {facts.length > 0 && (
-          <dl className="mt-5 grid grid-cols-3 gap-px bg-white/10 border border-white/10">
+          <dl className="mt-5 grid grid-cols-3 gap-px bg-gray-200 border border-gray-200">
             {facts.map(([k, v]) => (
-              <div key={k} className="bg-[#0d2c4b] px-3 py-3">
-                <dt className="text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{k}</dt>
-                <dd className="text-white text-sm font-medium mt-1">{v}</dd>
+              <div key={k} className="bg-gray-50 px-3 py-3">
+                <dt className="text-accent text-[10px] font-bold uppercase tracking-[0.18em]">{k}</dt>
+                <dd className="text-primary text-sm font-medium mt-1">{v}</dd>
               </div>
             ))}
           </dl>
         )}
-        <span className="mt-5 inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-3 transition-all">
+        <span className="mt-5 inline-flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-3 transition-all">
           View Details <ChevronRight className="w-4 h-4" aria-hidden="true" />
         </span>
       </div>
@@ -347,12 +347,12 @@ export function Vessels() {
   const current = VESSELS.find((v) => v.id === openId);
   const close = useCallback(() => setOpenId(null), []);
   return (
-    <section id="vessels" className="bg-[#0A2540] py-16 md:py-24 scroll-mt-16" aria-labelledby="vessels-heading">
+    <section id="vessels" className="bg-white py-16 md:py-24 scroll-mt-16" aria-labelledby="vessels-heading">
       <style>{`@keyframes vfade{from{opacity:0}to{opacity:1}}`}</style>
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-10 md:mb-14">
-          <p className="text-[#8FB8DE] text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">On the Water</p>
-          <h2 id="vessels-heading" className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.1]">
+          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">On the Water</p>
+          <h2 id="vessels-heading" className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-primary leading-[1.1]">
             Our Fleet
           </h2>
         </div>
