@@ -1,4 +1,5 @@
 import React from 'react';
+import { VESSELS } from '@/components/Vessels';
 import { motion } from 'framer-motion';
 import { TrendingUp, BarChart2, FileCheck, Globe, Calculator, MapPin } from 'lucide-react';
 
@@ -33,6 +34,11 @@ const COMPETENCIES = [
     title: 'Istanbul: A Maritime Gateway',
     desc: 'Strategically positioned at the crossroads of Mediterranean and Black Sea trades, with direct access to key regional commodity flows.',
   },
+];
+
+const SHIP_PHOTOS = [
+  { src: '/images/about-ship.webp', alt: 'Drybulk Pioneer bulk carrier at sea' },
+  ...VESSELS.flatMap((v) => v.photos.map((p) => ({ src: p.src, alt: p.alt }))),
 ];
 
 export function About() {
@@ -74,12 +80,27 @@ export function About() {
               client-focused execution on every fixture.
             </p>
 
-            <div className="mt-auto rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src="/images/about-ship.webp"
-                alt="Drybulk Pioneer bulk carrier at sea"
-                className="w-full h-full max-h-72 object-cover"
-              />
+            <div className="mt-auto overflow-hidden" aria-label="Photographs of our vessels">
+              <style>{`@keyframes abt-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.abt-track{animation:abt-marquee 40s linear infinite}
+.abt-marquee:hover .abt-track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.abt-track{animation:none}}`}</style>
+              <div className="abt-marquee overflow-hidden">
+                <div className="abt-track flex w-max gap-3">
+                  {[0, 1].map((dup) =>
+                    SHIP_PHOTOS.map((p) => (
+                      <img
+                        key={`${dup}-${p.src}`}
+                        src={p.src}
+                        alt={dup === 0 ? p.alt : ''}
+                        aria-hidden={dup === 1}
+                        loading="lazy"
+                        className="h-56 sm:h-64 w-auto max-w-none object-cover"
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
           </motion.div>
 
