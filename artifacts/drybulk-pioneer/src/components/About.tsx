@@ -37,7 +37,6 @@ const COMPETENCIES = [
 ];
 
 const SHIP_PHOTOS = [
-  { src: '/images/about-ship.webp', alt: 'Drybulk Pioneer bulk carrier at sea' },
   ...VESSELS.flatMap((v) => v.photos.map((p) => ({ src: p.src, alt: p.alt }))),
 ];
 
@@ -80,27 +79,12 @@ export function About() {
               client-focused execution on every fixture.
             </p>
 
-            <div className="mt-auto overflow-hidden" aria-label="Photographs of our vessels">
-              <style>{`@keyframes abt-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.abt-track{animation:abt-marquee 40s linear infinite}
-.abt-marquee:hover .abt-track{animation-play-state:paused}
-@media (prefers-reduced-motion:reduce){.abt-track{animation:none}}`}</style>
-              <div className="abt-marquee overflow-hidden">
-                <div className="abt-track flex w-max gap-3">
-                  {[0, 1].map((dup) =>
-                    SHIP_PHOTOS.map((p) => (
-                      <img
-                        key={`${dup}-${p.src}`}
-                        src={p.src}
-                        alt={dup === 0 ? p.alt : ''}
-                        aria-hidden={dup === 1}
-                        loading="lazy"
-                        className="h-56 sm:h-64 w-auto max-w-none object-cover"
-                      />
-                    ))
-                  )}
-                </div>
-              </div>
+            <div className="mt-auto rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="/images/about-ship.webp"
+                alt="Drybulk Pioneer bulk carrier at sea"
+                className="w-full h-full max-h-72 object-cover"
+              />
             </div>
           </motion.div>
 
@@ -110,8 +94,9 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:pt-4"
+            className="flex flex-col gap-4 lg:pt-4"
           >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {COMPETENCIES.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -132,6 +117,30 @@ export function About() {
                 </motion.div>
               );
             })}
+            </div>
+
+            <div className="mt-auto overflow-hidden rounded-2xl h-48 lg:h-60" aria-label="Photographs of our vessels">
+              <style>{`@keyframes abt-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.abt-track{animation:abt-marquee 40s linear infinite}
+.abt-marquee:hover .abt-track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.abt-track{animation:none}}`}</style>
+              <div className="abt-marquee h-full overflow-hidden">
+                <div className="abt-track flex w-max gap-3 h-full">
+                  {[0, 1].map((dup) =>
+                    SHIP_PHOTOS.map((p) => (
+                      <img
+                        key={`${dup}-${p.src}`}
+                        src={p.src}
+                        alt={dup === 0 ? p.alt : ''}
+                        aria-hidden={dup === 1}
+                        loading="lazy"
+                        className="h-full w-auto max-w-none object-cover"
+                      />
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
           </motion.div>
 
         </div>
