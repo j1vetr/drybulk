@@ -45,7 +45,7 @@ const SERVICES = [
 ];
 
 const INK = '#8FB8DE';
-const PAPER = '#0A2540';
+const PAPER = '#141F38';
 
 export function Services() {
   const [active, setActive] = useState(0);
