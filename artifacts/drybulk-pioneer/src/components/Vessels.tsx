@@ -6,16 +6,60 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path: string) => `${BASE}${path}`;
 
 type VesselPhoto = { src: string; alt: string; width: number; height: number };
-type Vessel = { id: string; name: string; photos: VesselPhoto[] };
+type SpecRow = [label: string, value: string | undefined];
+type SpecGroup = { title: string; rows: SpecRow[] };
+type Vessel = {
+  id: string;
+  name: string;
+  type?: string;
+  imo?: string;
+  photos: VesselPhoto[];
+  highlights?: { value: string; label: string }[];
+  specs?: SpecGroup[];
+};
 
-/* Add further vessels here. Only confirmed data belongs in this list. */
+/* Add further vessels here. Only confirmed data belongs in this list. Missing specs are hidden. */
 export const VESSELS: Vessel[] = [
   {
     id: 'rhosus-cy',
     name: 'RHOSUS CY',
+    type: 'Bulk Carrier',
+    imo: '9426192',
     photos: [
       { src: '/images/vessels/rhosus-cy-1.webp', alt: 'RHOSUS CY, photograph 1', width: 1440, height: 917 },
       { src: '/images/vessels/rhosus-cy-2.webp', alt: 'RHOSUS CY, photograph 2', width: 1440, height: 874 },
+    ],
+    highlights: [
+      { value: '57,937 MT', label: 'Deadweight' },
+      { value: '189.99 m', label: 'Length Overall' },
+      { value: '32.26 m', label: 'Beam' },
+      { value: '12.83 m', label: 'Maximum Draft' },
+      { value: '2011', label: 'Year Built' },
+      { value: '8,450 kW', label: 'Engine Power' },
+    ],
+    specs: [
+      { title: 'Vessel Overview', rows: [
+        ['Vessel Name', 'RHOSUS CY'], ['Vessel Type', 'Bulk Carrier'], ['IMO Number', '9426192'],
+        ['Year Built', '2011'], ['Country of Build', 'Philippines'], ['Hull Type', 'Single Hull'],
+        ['Hull Material', 'Steel'], ['Number of Decks', '1'] ] },
+      { title: 'Principal Dimensions', rows: [
+        ['Length Overall (LOA)', '189.99 m'], ['Length Between Perpendiculars (LBP)', '185.60 m'],
+        ['Breadth Moulded', '32.26 m'], ['Breadth Extreme', '32.26 m'], ['Moulded Depth', '18.00 m'],
+        ['Maximum Draft', '12.83 m'], ['Freeboard', '5.225 m'] ] },
+      { title: 'Tonnage & Capacity', rows: [
+        ['Deadweight Tonnage (DWT)', '57,937 MT'], ['Gross Tonnage (GT)', '32,309'], ['Net Tonnage (NT)', '19,439'],
+        ['Loaded Displacement', '67,814 MT'], ['Light Displacement', '9,877 MT'] ] },
+      { title: 'Main Engine Specifications', rows: [
+        ['Engine Type', 'Diesel Engine'], ['Engine Model', '6S50MC-C'], ['Number of Main Engines', '1'],
+        ['Number of Cylinders', '6'], ['Engine Power', '8,450 kW'], ['Engine Speed', '119 RPM'],
+        ['Cylinder Bore', '500 mm'], ['Piston Stroke', '2,000 mm'] ] },
+      { title: 'Construction Details', rows: [
+        ['Country of Build', 'Philippines'], ['Yard Number', '135'], ['Order Date', '01 January 2007'],
+        ['Keel Laid', '13 September 2010'], ['Launch Date', '07 July 2011'],
+        ['Delivery / Built Date', '15 September 2011'], ['Hull Construction', 'Single Hull'], ['Hull Material', 'Steel'] ] },
+      { title: 'Additional Technical Information', rows: [
+        ['AIS Transceiver Class', 'Class A'], ['Distance to Bow', '163 m'], ['Distance to Stern', '26.99 m'],
+        ['Distance to Port', '19 m'], ['Distance to Starboard', '13.26 m'] ] },
     ],
   },
   {
@@ -27,6 +71,42 @@ export const VESSELS: Vessel[] = [
     ],
   },
 ];
+
+function Specs({ vessel }: { vessel: Vessel }) {
+  const groups = (vessel.specs ?? [])
+    .map((g) => ({ ...g, rows: g.rows.filter((r): r is [string, string] => !!r[1]) }))
+    .filter((g) => g.rows.length);
+  if (!vessel.highlights?.length && !groups.length) return null;
+  return (
+    <div className="mt-8" data-testid={`specs-${vessel.id}`}>
+      {vessel.highlights && (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/15 border border-white/15 mb-8">
+          {vessel.highlights.map((h) => (
+            <div key={h.label} className="bg-[#0d2c4b] px-4 py-5">
+              <p className="text-white font-serif text-2xl xl:text-3xl leading-none">{h.value}</p>
+              <p className="mt-2 text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{h.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+        {groups.map((g) => (
+          <div key={g.title}>
+            <h4 className="text-[#8FB8DE] text-xs font-bold uppercase tracking-[0.2em] pb-3 border-b border-white/25">{g.title}</h4>
+            <dl>
+              {g.rows.map(([k, v]) => (
+                <div key={k} className="flex justify-between gap-4 py-2.5 border-b border-white/10 text-sm">
+                  <dt className="text-white/60">{k}</dt>
+                  <dd className="text-white font-medium text-right">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Lightbox({
   vessel,
@@ -196,7 +276,7 @@ function VesselEntry({ vessel }: { vessel: Vessel }) {
           {vessel.name}
         </h3>
         <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8FB8DE] shrink-0 pb-1">
-          {vessel.photos.length} photos
+          {[vessel.type, vessel.imo && `IMO ${vessel.imo}`].filter(Boolean).join(' / ') || `${vessel.photos.length} photos`}
         </span>
       </motion.div>
 
@@ -215,6 +295,8 @@ function VesselEntry({ vessel }: { vessel: Vessel }) {
         )}
       </div>
 
+      <Specs vessel={vessel} />
+
       {open !== null && (
         <Lightbox vessel={vessel} index={open} onClose={() => setOpen(null)} onIndex={setOpen} />
       )}
@@ -230,7 +312,7 @@ export function Vessels() {
         <div className="mb-10 md:mb-14">
           <p className="text-[#8FB8DE] text-xs md:text-sm font-bold tracking-[0.2em] uppercase mb-3">On the Water</p>
           <h2 id="vessels-heading" className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-white leading-[1.1]">
-            Vessels
+            Our Fleet
           </h2>
         </div>
         <div className="space-y-16 md:space-y-24">

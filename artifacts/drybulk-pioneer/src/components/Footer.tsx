@@ -20,7 +20,7 @@ export function Footer() {
             <ul className="space-y-2">
               <li><a href="/#about"      className="text-white/60 hover:text-white transition-colors text-xs">About Us</a></li>
               <li><a href="/#services"   className="text-white/60 hover:text-white transition-colors text-xs">Services</a></li>
-              <li><a href="/#vessels"    className="text-white/60 hover:text-white transition-colors text-xs">Vessels</a></li>
+              <li><a href="/#vessels"    className="text-white/60 hover:text-white transition-colors text-xs">Our Fleet</a></li>
               <li><a href="/#compliance" className="text-white/60 hover:text-white transition-colors text-xs">HSEQ &amp; Compliance</a></li>
               <li><a href="/#contact"    className="text-white/60 hover:text-white transition-colors text-xs">Contact</a></li>
             </ul>
