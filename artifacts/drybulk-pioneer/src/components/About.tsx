@@ -37,7 +37,7 @@ const COMPETENCIES = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+    <section id="about" className="relative py-20 md:py-28 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-[0.88fr_1.12fr] gap-14 lg:gap-16 items-start">
 

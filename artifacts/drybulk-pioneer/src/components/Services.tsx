@@ -75,22 +75,6 @@ export function Services() {
         className="w-full h-[560px] sm:h-[640px] lg:h-[760px] flex overflow-hidden relative"
         style={{ backgroundColor: PAPER }}
       >
-        {/* Blueprint grid texture */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.35] z-10"
-          style={{
-            backgroundImage: `linear-gradient(${INK}22 1px, transparent 1px), linear-gradient(90deg, ${INK}22 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
-          }}
-        />
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.25] z-10"
-          style={{
-            backgroundImage: `linear-gradient(${INK}33 1px, transparent 1px), linear-gradient(90deg, ${INK}33 1px, transparent 1px)`,
-            backgroundSize: '120px 120px',
-          }}
-        />
-
         {SERVICES.map((s, i) => {
           const isActive = i === active;
           const Icon = s.icon;
