@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 const asset = (path: string) => `${BASE}${path}`;
@@ -78,7 +78,7 @@ function Specs({ vessel }: { vessel: Vessel }) {
     .filter((g) => g.rows.length);
   if (!vessel.highlights?.length && !groups.length) return null;
   return (
-    <div className="mt-8" data-testid={`specs-${vessel.id}`}>
+    <div className="mt-6" data-testid={`specs-${vessel.id}`}>
       {vessel.highlights && (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/15 border border-white/15 mb-8">
           {vessel.highlights.map((h) => (
@@ -219,92 +219,133 @@ function Lightbox({
   );
 }
 
-function PhotoButton({
-  vessel, photo, i, onOpen, className, delay,
-}: {
-  vessel: Vessel; photo: VesselPhoto; i: number; onOpen: (i: number) => void; className: string; delay: number;
-}) {
+function summary(v: Vessel): [string, string][] {
+  const h = (l: string) => v.highlights?.find((x) => x.label === l)?.value;
+  const rows: [string, string | undefined][] = [
+    ['Type', v.type], ['IMO', v.imo], ['Built', h('Year Built')],
+    ['DWT', h('Deadweight')], ['LOA', h('Length Overall')], ['Beam', h('Beam')],
+  ];
+  return rows.filter((r): r is [string, string] => !!r[1]);
+}
+
+function VesselModal({ vessel, onClose }: { vessel: Vessel; onClose: () => void }) {
+  const [active, setActive] = useState(0);
+  const [zoom, setZoom] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const photo = vessel.photos[active];
+
+  useEffect(() => {
+    const prev = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    const original = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = original; prev?.focus(); };
+  }, []);
+  useEffect(() => {
+    if (zoom !== null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose, zoom]);
+
+  return (
+    <div
+      role="dialog" aria-modal="true" aria-label={`${vessel.name} details`}
+      className="fixed inset-0 z-[90] bg-[#06182b]/90 overflow-y-auto motion-safe:animate-[vfade_.25s_ease-out]"
+      onClick={onClose} data-testid={`dialog-vessel-${vessel.id}`}
+    >
+      <div className="min-h-full flex items-start sm:items-center justify-center p-0 sm:p-6">
+        <div className="relative w-full max-w-5xl bg-[#0A2540] border border-white/15" onClick={(e) => e.stopPropagation()}>
+          <button ref={closeRef} onClick={onClose} aria-label="Close vessel details"
+            className="absolute top-3 right-3 z-10 p-2 bg-[#06182b]/70 text-white hover:bg-[#06182b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+            data-testid="button-close-vessel">
+            <X className="w-5 h-5" />
+          </button>
+          <div className="relative">
+            <button type="button" onClick={() => setZoom(active)} className="block w-full aspect-[16/9] sm:aspect-[2/1] bg-[#0d2c4b] overflow-hidden group" aria-label="View photo full size">
+              <img src={asset(photo.src)} alt={photo.alt} className="w-full h-full object-cover" />
+            </button>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#06182b] to-transparent p-5 sm:p-8 pt-20 pointer-events-none">
+              <p className="text-[#8FB8DE] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+                {[vessel.type, vessel.imo && `IMO ${vessel.imo}`].filter(Boolean).join(' / ')}
+              </p>
+              <h3 className="text-white font-bold text-3xl sm:text-5xl tracking-tight leading-none">{vessel.name}</h3>
+            </div>
+          </div>
+          {vessel.photos.length > 1 && (
+            <div className="flex gap-2 px-5 sm:px-8 pt-4">
+              {vessel.photos.map((p, i) => (
+                <button key={p.src} onClick={() => setActive(i)} aria-label={`Show photo ${i + 1}`}
+                  className={`w-20 h-14 overflow-hidden border-2 ${i === active ? 'border-[#8FB8DE]' : 'border-transparent opacity-60 hover:opacity-100'}`}>
+                  <img src={asset(p.src)} alt="" className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="px-5 sm:px-8 pb-8">
+            {vessel.specs || vessel.highlights ? <Specs vessel={vessel} /> : (
+              <p className="mt-8 text-white/60 text-sm border border-white/15 px-5 py-6">
+                Technical specifications for this vessel will be published soon.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+      {zoom !== null && (
+        <div onClick={(e) => e.stopPropagation()}>
+          <Lightbox vessel={vessel} index={zoom} onClose={() => setZoom(null)} onIndex={setZoom} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VesselCard({ vessel, i, onOpen }: { vessel: Vessel; i: number; onOpen: () => void }) {
   const reduce = useReducedMotion();
+  const facts = summary(vessel);
   return (
     <motion.button
-      type="button"
-      onClick={() => onOpen(i)}
+      type="button" onClick={onOpen}
       initial={reduce ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative block overflow-hidden bg-[#0d2c4b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8FB8DE] ${className}`}
-      aria-label={`View ${vessel.name} photo ${i + 1} of ${vessel.photos.length} full size`}
-      data-testid={`button-open-photo-${vessel.id}-${i}`}
+      transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="group text-left bg-[#0d2c4b] border border-white/10 hover:border-[#8FB8DE]/60 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8FB8DE]"
+      aria-label={`View ${vessel.name} details`}
+      data-testid={`card-vessel-${vessel.id}`}
     >
-      <img
-        src={asset(photo.src)}
-        alt={photo.alt}
-        width={photo.width}
-        height={photo.height}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out motion-safe:group-hover:scale-[1.03]"
-      />
-      <span className="absolute bottom-3 right-3 flex items-center gap-2 bg-[#06182b]/70 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-2 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100 transition-opacity duration-300">
-        <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
-        View
-      </span>
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img src={asset(vessel.photos[0].src)} alt={vessel.photos[0].alt} width={vessel.photos[0].width} height={vessel.photos[0].height}
+          loading="lazy" decoding="async"
+          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out motion-safe:group-hover:scale-[1.04]" />
+        <span className="absolute top-3 right-3 bg-[#06182b]/75 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-2">
+          {vessel.photos.length} Photos
+        </span>
+      </div>
+      <div className="p-5 sm:p-7">
+        <h3 className="text-white font-bold text-2xl sm:text-3xl tracking-tight" data-testid={`text-vessel-name-${vessel.id}`}>{vessel.name}</h3>
+        {facts.length > 0 && (
+          <dl className="mt-5 grid grid-cols-3 gap-px bg-white/10 border border-white/10">
+            {facts.map(([k, v]) => (
+              <div key={k} className="bg-[#0d2c4b] px-3 py-3">
+                <dt className="text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{k}</dt>
+                <dd className="text-white text-sm font-medium mt-1">{v}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        <span className="mt-5 inline-flex items-center gap-2 text-white text-xs font-bold uppercase tracking-[0.2em] group-hover:gap-3 transition-all">
+          View Details <ChevronRight className="w-4 h-4" aria-hidden="true" />
+        </span>
+      </div>
     </motion.button>
   );
 }
 
-function VesselEntry({ vessel }: { vessel: Vessel }) {
-  const [open, setOpen] = useState<number | null>(null);
-  const reduce = useReducedMotion();
-  const [first, ...rest] = vessel.photos;
-
-  return (
-    <article aria-labelledby={`vessel-${vessel.id}`} data-testid={`card-vessel-${vessel.id}`}>
-      <motion.div
-        initial={reduce ? false : { opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="flex items-end justify-between gap-6 border-b border-white/15 pb-5 mb-6"
-      >
-        <h3
-          id={`vessel-${vessel.id}`}
-          className="text-white font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-none"
-          data-testid={`text-vessel-name-${vessel.id}`}
-        >
-          {vessel.name}
-        </h3>
-        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8FB8DE] shrink-0 pb-1">
-          {[vessel.type, vessel.imo && `IMO ${vessel.imo}`].filter(Boolean).join(' / ') || `${vessel.photos.length} photos`}
-        </span>
-      </motion.div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4">
-        {first && (
-          <PhotoButton vessel={vessel} photo={first} i={0} onOpen={setOpen} delay={0}
-            className={`aspect-[16/10] ${rest.length ? 'lg:col-span-8' : 'lg:col-span-12'}`} />
-        )}
-        {rest.length > 0 && (
-          <div className="lg:col-span-4 grid gap-3 sm:gap-4">
-            {rest.map((p, j) => (
-              <PhotoButton key={p.src} vessel={vessel} photo={p} i={j + 1} onOpen={setOpen} delay={0.12 * (j + 1)}
-                className="aspect-[16/10] lg:aspect-auto lg:h-full" />
-            ))}
-          </div>
-        )}
-      </div>
-
-      <Specs vessel={vessel} />
-
-      {open !== null && (
-        <Lightbox vessel={vessel} index={open} onClose={() => setOpen(null)} onIndex={setOpen} />
-      )}
-    </article>
-  );
-}
-
 export function Vessels() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const current = VESSELS.find((v) => v.id === openId);
+  const close = useCallback(() => setOpenId(null), []);
   return (
     <section id="vessels" className="bg-[#0A2540] py-16 md:py-24 scroll-mt-16" aria-labelledby="vessels-heading">
       <style>{`@keyframes vfade{from{opacity:0}to{opacity:1}}`}</style>
@@ -315,10 +356,11 @@ export function Vessels() {
             Our Fleet
           </h2>
         </div>
-        <div className="space-y-16 md:space-y-24">
-          {VESSELS.map((v) => <VesselEntry key={v.id} vessel={v} />)}
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {VESSELS.map((v, i) => <VesselCard key={v.id} vessel={v} i={i} onOpen={() => setOpenId(v.id)} />)}
         </div>
       </div>
+      {current && <VesselModal vessel={current} onClose={close} />}
     </section>
   );
 }
