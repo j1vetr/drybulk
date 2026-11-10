@@ -64,10 +64,54 @@ export const VESSELS: Vessel[] = [
   },
   {
     id: 'sea-diamond-i',
-    name: 'SEA DIAMOND I',
+    name: 'SEA DIAMOND 1',
+    type: 'Bulk Carrier',
+    imo: '9364825',
     photos: [
-      { src: '/images/vessels/sea-diamond-i-1.webp', alt: 'SEA DIAMOND I, photograph 1', width: 1600, height: 1111 },
-      { src: '/images/vessels/sea-diamond-i-2.webp', alt: 'SEA DIAMOND I, photograph 2', width: 1600, height: 1112 },
+      { src: '/images/vessels/sea-diamond-i-1.webp', alt: 'SEA DIAMOND 1, photograph 1', width: 1600, height: 1111 },
+      { src: '/images/vessels/sea-diamond-i-2.webp', alt: 'SEA DIAMOND 1, photograph 2', width: 1600, height: 1112 },
+    ],
+    highlights: [
+      { value: '53,483 MT', label: 'Deadweight' },
+      { value: '189.94 m', label: 'Length Overall' },
+      { value: '32.26 m', label: 'Beam' },
+      { value: '12.30 m', label: 'Maximum Draft' },
+      { value: '2006', label: 'Year Built' },
+      { value: '9,480 kW', label: 'Engine Power' },
+      { value: '15.70 kn', label: 'Service Speed' },
+    ],
+    specs: [
+      { title: 'Vessel Overview', rows: [
+        ['Vessel Name', 'SEA DIAMOND 1'], ['Vessel Type', 'Bulk Carrier'], ['IMO Number', '9364825'],
+        ['Year Built', '2006'], ['Country of Build', 'Japan'], ['Hull Type', 'Single Hull'],
+        ['Hull Material', 'Steel'], ['Number of Decks', '1'], ['Service Speed', '15.70 knots'] ] },
+      { title: 'Principal Dimensions', rows: [
+        ['Length Overall (LOA)', '189.94 m'], ['Length Between Perpendiculars (LBP)', '182.00 m'],
+        ['Breadth Moulded', '32.26 m'], ['Breadth Extreme', '32.26 m'], ['Moulded Depth', '17.30 m'],
+        ['Maximum Draft', '12.30 m'], ['Freeboard', '5.037 m'] ] },
+      { title: 'Tonnage & Capacity', rows: [
+        ['Deadweight Tonnage (DWT)', '53,483 MT'], ['Gross Tonnage (GT)', '29,978'], ['Net Tonnage (NT)', '18,486'],
+        ['Loaded Displacement', '61,952 MT'], ['Light Displacement', '8,469 MT'] ] },
+      { title: 'Cargo Capacity', rows: [
+        ['Ballast Capacity', '14,570 m³'], ['Bale Capacity', '65,526 m³'], ['Grain Capacity', '68,927 m³'] ] },
+      { title: 'Main Engine Specifications', rows: [
+        ['Engine Type', 'Diesel Engine'], ['Engine Model', '6S50MC-C'], ['Number of Main Engines', '1'],
+        ['Number of Cylinders', '6'], ['Engine Power', '9,480 kW'], ['Engine Speed', '127 RPM'],
+        ['Cylinder Bore', '500 mm'], ['Piston Stroke', '2,000 mm'], ['Number of Auxiliary Engines', '4'],
+        ['Propeller Type', 'Fixed Pitch Propeller'], ['Number of Propellers', '1'], ['Service Speed', '15.70 knots'] ] },
+      { title: 'Fuel Specifications', rows: [
+        ['Main Engine Fuel Type', 'Marine Diesel Oil (MDO)'], ['Fuel Tank Capacity', '2,317 m³'],
+        ['LNG Ready', 'No'], ['Ammonia Ready', 'No'], ['Methanol Ready', 'No'] ] },
+      { title: 'Cargo Handling Equipment', rows: [
+        ['Number of Cranes', '4'], ['Crane Safe Working Load (SWL)', '30'], ['Cargo Grabs Fitted', 'Yes'] ] },
+      { title: 'Construction Details', rows: [
+        ['Country of Build', 'Japan'], ['Yard Number', '628'], ['Order Date', '01 January 2005'],
+        ['Keel Laid', '07 June 2004'], ['Launch Date', '08 February 2006'],
+        ['Delivery / Built Date', '31 March 2006'], ['Hull Construction', 'Single Hull'],
+        ['Hull Material', 'Steel'], ['Number of Decks', '1'] ] },
+      { title: 'Additional Technical Information', rows: [
+        ['AIS Transceiver Class', 'Class A'], ['Distance to Bow', '163 m'], ['Distance to Stern', '26.94 m'],
+        ['Distance to Port', '23 m'], ['Distance to Starboard', '9.26 m'] ] },
     ],
   },
 ];
@@ -80,10 +124,10 @@ function Specs({ vessel }: { vessel: Vessel }) {
   return (
     <div className="mt-6" data-testid={`specs-${vessel.id}`}>
       {vessel.highlights && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/15 border border-white/15 mb-8">
+        <div className={`grid grid-cols-2 md:grid-cols-4 ${vessel.highlights.length > 6 ? 'lg:grid-cols-7' : 'lg:grid-cols-6'} gap-px bg-white/15 border border-white/15 mb-8`}>
           {vessel.highlights.map((h) => (
             <div key={h.label} className="bg-[#0d2c4b] px-4 py-5">
-              <p className="text-white font-bold text-2xl xl:text-3xl leading-none">{h.value}</p>
+              <p className="text-white font-bold text-xl xl:text-2xl leading-none">{h.value}</p>
               <p className="mt-2 text-[#8FB8DE] text-[10px] font-bold uppercase tracking-[0.18em]">{h.label}</p>
             </div>
           ))}
